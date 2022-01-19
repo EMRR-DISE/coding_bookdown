@@ -1,0 +1,23 @@
+--- 
+title: "Coding Bookdown for EMRR"
+author: "Catarina Pien"
+description: |
+  This book provides example code for stats and working with data in R.
+  The HTML output format for this example is bookdown::gitbook,
+  set in the _output.yml file.
+url: https://bookdown.org/yihui/bookdown
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+cover-image: images/yolo-cows.jpg
+
+link-citations: yes
+github-repo: EMRR-DISE/coding_bookdown
+---
+
+# Preface {-}
+
+This book provides example code for stats and working with data in R.
+
+We start with basic R skills, plotting and manipulating data. We also have more complex code for making maps, functions, loops, then statistical tests. 

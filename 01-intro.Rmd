@@ -1,0 +1,6 @@
+# Basics of R
+
+* Creating projects, file structure
+* Reading in data from csv, excel
+* Reading data from online
+* Writing data
