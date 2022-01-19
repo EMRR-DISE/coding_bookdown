@@ -8,13 +8,18 @@ making-plots
 interactive-tools
 plotly---interactive-plotting
 making-maps
-functions-and-for-loops
+advanced-tools
+conditional
+functions
+for-loops
+apply
 data-exploration-and-qaqc
 data-exploration
 qaqc
 basic-stats
 parametric-stats
 t-test
+non-parametric-statistics
 glm-and-glmm
 gam-and-gamm
 multivariate-stats
@@ -39,3 +44,4 @@ callout-blocks
 publishing
 pages
 metadata-for-sharing
+time-series

@@ -1,3 +1,5 @@
+To get to the bookdown: https://emrr-dise.github.io/coding_bookdown/
+
 This is a bookdown created for EMRR that contains space for sharing code. This includes code for data processing and visualization, as well as statistical analyses. 
 
 Last updated 1/19/2012.

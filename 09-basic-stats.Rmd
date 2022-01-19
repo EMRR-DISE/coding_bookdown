@@ -38,3 +38,4 @@ ggplot(fish_lmb, aes(x = MethodCode, y = Count)) + geom_col() # This works best 
 
 ```
 
+## Non-parametric Statistics

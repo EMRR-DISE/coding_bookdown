@@ -2,7 +2,7 @@
 
 ## Plotly - Interactive plotting
 
-```{r}
+```{r , warning = FALSE, message = FALSE}
 library(tidyverse)
 library(lubridate)
 library(plotly)
@@ -10,7 +10,7 @@ library(plotly)
 
 Make a plot. 
 Use plotly to make plot interactive.
-```{r}
+```{r, warning = FALSE, message = FALSE}
 iris1 <- ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) + geom_point()
 ggplotly(iris1)
 ```
@@ -19,7 +19,7 @@ Changing hover text
 https://plotly.com/r/hover-text-and-formatting/
 https://stackoverflow.com/questions/36325154/how-to-choose-variable-to-display-in-tooltip-when-using-ggplotly
 
-```{r}
+```{r, warning = FALSE, message = FALSE}
 # Use label = to add extra variables in the label in addition to what's in the aes()
 iris2 <- ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species, label = Petal.Length)) + geom_point()
 

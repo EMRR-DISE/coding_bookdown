@@ -181,7 +181,15 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="interactive-tools.html"><a href="interactive-tools.html#plotly---interactive-plotting"><i class="fa fa-check"></i><b>4.1</b> Plotly - Interactive plotting</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>5</b> Making Maps</a></li>
-<li class="chapter" data-level="6" data-path="functions-and-for-loops.html"><a href="functions-and-for-loops.html"><i class="fa fa-check"></i><b>6</b> Functions and For Loops</a></li>
+<li class="chapter" data-level="6" data-path="advanced-tools.html"><a href="advanced-tools.html"><i class="fa fa-check"></i><b>6</b> Advanced tools</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="advanced-tools.html"><a href="advanced-tools.html#conditional"><i class="fa fa-check"></i><b>6.1</b> Conditional</a></li>
+<li class="chapter" data-level="6.2" data-path="advanced-tools.html"><a href="advanced-tools.html#functions"><i class="fa fa-check"></i><b>6.2</b> Functions</a></li>
+<li class="chapter" data-level="6.3" data-path="advanced-tools.html"><a href="advanced-tools.html#for-loops"><i class="fa fa-check"></i><b>6.3</b> For loops</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="advanced-tools.html"><a href="advanced-tools.html#apply"><i class="fa fa-check"></i><b>6.3.1</b> Apply</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html"><i class="fa fa-check"></i><b>7</b> Data Exploration and QA/QC</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#data-exploration"><i class="fa fa-check"></i><b>7.1</b> Data Exploration</a></li>
@@ -193,6 +201,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="basic-stats.html"><a href="basic-stats.html#t-test"><i class="fa fa-check"></i><b>8.1.1</b> T-test</a></li>
 </ul></li>
+<li class="chapter" data-level="8.2" data-path="basic-stats.html"><a href="basic-stats.html#non-parametric-statistics"><i class="fa fa-check"></i><b>8.2</b> Non-parametric Statistics</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="glm-and-glmm.html"><a href="glm-and-glmm.html"><i class="fa fa-check"></i><b>9</b> GLM and GLMM</a></li>
 <li class="chapter" data-level="10" data-path="gam-and-gamm.html"><a href="gam-and-gamm.html"><i class="fa fa-check"></i><b>10</b> GAM and GAMM</a></li>
@@ -233,6 +242,7 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="13" data-path="time-series.html"><a href="time-series.html"><i class="fa fa-check"></i><b>13</b> Time Series</a></li>
 </ul>
 
       </nav>
@@ -252,8 +262,8 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="basic-stats" class="section level1" number="8">
 <h1><span class="header-section-number">Chapter 8</span> Basic Stats</h1>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-stats.html#cb19-1" aria-hidden="true" tabindex="-1"></a>fish_yolo_url <span class="ot">&lt;-</span> <span class="st">&quot;https://portal.edirepository.org/nis/dataviewer?packageid=edi.233.2&amp;entityid=015e494911cf35c90089ced5a3127334&quot;</span></span>
-<span id="cb19-2"><a href="basic-stats.html#cb19-2" aria-hidden="true" tabindex="-1"></a>fish_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(fish_yolo_url)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="basic-stats.html#cb8-1" aria-hidden="true" tabindex="-1"></a>fish_yolo_url <span class="ot">&lt;-</span> <span class="st">&quot;https://portal.edirepository.org/nis/dataviewer?packageid=edi.233.2&amp;entityid=015e494911cf35c90089ced5a3127334&quot;</span></span>
+<span id="cb8-2"><a href="basic-stats.html#cb8-2" aria-hidden="true" tabindex="-1"></a>fish_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(fish_yolo_url)</span></code></pre></div>
 <pre><code>## Warning: One or more parsing issues, see `problems()` for details</code></pre>
 <pre><code>## Rows: 182414 Columns: 32</code></pre>
 <pre><code>## -- Column specification --------------------------------------------------------
@@ -265,7 +275,7 @@ div.csl-indent {
 <pre><code>## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="basic-stats.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(fish_data)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-stats.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(fish_data)</span></code></pre></div>
 <pre><code>## spec_tbl_df [182,414 x 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ SampleDate          : chr [1:182414] &quot;1/16/1998&quot; &quot;1/16/1998&quot; &quot;1/19/1998&quot; &quot;1/19/1998&quot; ...
 ##  $ SampleTime          : &#39;hms&#39; num [1:182414] 14:05:00 15:00:00 12:17:00 12:17:00 ...
@@ -336,14 +346,14 @@ div.csl-indent {
 ##   ..   Longitude = col_double()
 ##   .. )
 ##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="basic-stats.html#cb26-1" aria-hidden="true" tabindex="-1"></a>fish_lmb <span class="ot">&lt;-</span> fish_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CommonName <span class="sc">==</span> <span class="st">&quot;Largemouth Bass&quot;</span>)</span>
-<span id="cb26-2"><a href="basic-stats.html#cb26-2" aria-hidden="true" tabindex="-1"></a>fish_lmb2 <span class="ot">&lt;-</span> fish_lmb <span class="sc">%&gt;%</span> <span class="fu">filter</span>(MethodCode <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BSEIN&quot;</span>, <span class="st">&quot;RSTR&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="basic-stats.html#cb15-1" aria-hidden="true" tabindex="-1"></a>fish_lmb <span class="ot">&lt;-</span> fish_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CommonName <span class="sc">==</span> <span class="st">&quot;Largemouth Bass&quot;</span>)</span>
+<span id="cb15-2"><a href="basic-stats.html#cb15-2" aria-hidden="true" tabindex="-1"></a>fish_lmb2 <span class="ot">&lt;-</span> fish_lmb <span class="sc">%&gt;%</span> <span class="fu">filter</span>(MethodCode <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BSEIN&quot;</span>, <span class="st">&quot;RSTR&quot;</span>))</span></code></pre></div>
 <div id="parametric-stats" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> Parametric Stats</h2>
 <div id="t-test" class="section level3" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> T-test</h3>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="basic-stats.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="do">### 1. Independent-samples t-test: Is there a difference in LMB Count by Method? ----------------</span></span>
-<span id="cb27-2"><a href="basic-stats.html#cb27-2" aria-hidden="true" tabindex="-1"></a>(lmb.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(fish_lmb2<span class="sc">$</span>Count<span class="sc">~</span>fish_lmb2<span class="sc">$</span>MethodCode)) <span class="co"># not significant</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="basic-stats.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">### 1. Independent-samples t-test: Is there a difference in LMB Count by Method? ----------------</span></span>
+<span id="cb16-2"><a href="basic-stats.html#cb16-2" aria-hidden="true" tabindex="-1"></a>(lmb.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(fish_lmb2<span class="sc">$</span>Count<span class="sc">~</span>fish_lmb2<span class="sc">$</span>MethodCode)) <span class="co"># not significant</span></span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -355,15 +365,15 @@ div.csl-indent {
 ## sample estimates:
 ## mean in group BSEIN  mean in group RSTR 
 ##            1.146387            2.044077</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="basic-stats.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb29-2"><a href="basic-stats.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_lmb2, <span class="fu">aes</span>(<span class="at">x =</span> MethodCode, <span class="at">y =</span> Count)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="basic-stats.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb18-2"><a href="basic-stats.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_lmb2, <span class="fu">aes</span>(<span class="at">x =</span> MethodCode, <span class="at">y =</span> Count)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/ttest-1.png" width="672" /></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="basic-stats.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_lmb2, <span class="fu">aes</span>(<span class="at">x =</span> Count, <span class="at">color =</span> MethodCode)) <span class="sc">+</span> <span class="fu">geom_density</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-stats.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_lmb2, <span class="fu">aes</span>(<span class="at">x =</span> Count, <span class="at">color =</span> MethodCode)) <span class="sc">+</span> <span class="fu">geom_density</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/ttest-2.png" width="672" /></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="basic-stats.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_lmb, <span class="fu">aes</span>(<span class="at">x =</span> MethodCode, <span class="at">y =</span> Count)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="co"># This works best for data with lots of zeros</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="basic-stats.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_lmb, <span class="fu">aes</span>(<span class="at">x =</span> MethodCode, <span class="at">y =</span> Count)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="co"># This works best for data with lots of zeros</span></span></code></pre></div>
 <p><img src="_main_files/figure-html/ttest-3.png" width="672" /></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="basic-stats.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">### 2. Paired t-test: Does a treatment cause a difference? Did Action Phase alter Count of LMB? -------------</span></span>
-<span id="cb32-2"><a href="basic-stats.html#cb32-2" aria-hidden="true" tabindex="-1"></a>(lmb.ttest2 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(fish_lmb2<span class="sc">$</span>Count <span class="sc">~</span> fish_lmb2<span class="sc">$</span>MethodCode)) <span class="co"># significant</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="basic-stats.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">### 2. Paired t-test: Does a treatment cause a difference? Did Action Phase alter Count of LMB? -------------</span></span>
+<span id="cb21-2"><a href="basic-stats.html#cb21-2" aria-hidden="true" tabindex="-1"></a>(lmb.ttest2 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(fish_lmb2<span class="sc">$</span>Count <span class="sc">~</span> fish_lmb2<span class="sc">$</span>MethodCode)) <span class="co"># significant</span></span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -375,13 +385,13 @@ div.csl-indent {
 ## sample estimates:
 ## mean in group BSEIN  mean in group RSTR 
 ##            1.146387            2.044077</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="basic-stats.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot: Figure out the direction of the trend</span></span>
-<span id="cb34-2"><a href="basic-stats.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(fish_lmb2, aes(x = ActionPhase, y = Count)) + geom_boxplot()</span></span>
-<span id="cb34-3"><a href="basic-stats.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(fish_lmb2, aes(x = Count, color = ActionPhase)) + geom_density()</span></span>
-<span id="cb34-4"><a href="basic-stats.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(fish_lmb2, aes(x = ActionPhase, y = Count)) + geom_col() # This works best for data with lots of zeros</span></span>
-<span id="cb34-5"><a href="basic-stats.html#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-6"><a href="basic-stats.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="do">### 3. One-sample t-test: Is the Count greater than 0? ---------------------------------------</span></span>
-<span id="cb34-7"><a href="basic-stats.html#cb34-7" aria-hidden="true" tabindex="-1"></a>(lmb.ttest3 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(fish_lmb2<span class="sc">$</span>Count, <span class="at">mu =</span> <span class="dv">0</span>)) <span class="co"># p &lt; 0.05, Yes, it is</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="basic-stats.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot: Figure out the direction of the trend</span></span>
+<span id="cb23-2"><a href="basic-stats.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(fish_lmb2, aes(x = ActionPhase, y = Count)) + geom_boxplot()</span></span>
+<span id="cb23-3"><a href="basic-stats.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(fish_lmb2, aes(x = Count, color = ActionPhase)) + geom_density()</span></span>
+<span id="cb23-4"><a href="basic-stats.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(fish_lmb2, aes(x = ActionPhase, y = Count)) + geom_col() # This works best for data with lots of zeros</span></span>
+<span id="cb23-5"><a href="basic-stats.html#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="basic-stats.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="do">### 3. One-sample t-test: Is the Count greater than 0? ---------------------------------------</span></span>
+<span id="cb23-7"><a href="basic-stats.html#cb23-7" aria-hidden="true" tabindex="-1"></a>(lmb.ttest3 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(fish_lmb2<span class="sc">$</span>Count, <span class="at">mu =</span> <span class="dv">0</span>)) <span class="co"># p &lt; 0.05, Yes, it is</span></span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -393,8 +403,11 @@ div.csl-indent {
 ## sample estimates:
 ## mean of x 
 ##  1.310797</code></pre>
-
 </div>
+</div>
+<div id="non-parametric-statistics" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Non-parametric Statistics</h2>
+
 </div>
 </div>
             </section>
@@ -434,7 +447,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-basic-stats.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-basic-stats.Rmd",
 "text": "Edit"
 },
 "history": {

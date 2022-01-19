@@ -181,7 +181,15 @@ div.csl-indent {
 <li class="chapter" data-level="4.1" data-path="interactive-tools.html"><a href="interactive-tools.html#plotly---interactive-plotting"><i class="fa fa-check"></i><b>4.1</b> Plotly - Interactive plotting</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>5</b> Making Maps</a></li>
-<li class="chapter" data-level="6" data-path="functions-and-for-loops.html"><a href="functions-and-for-loops.html"><i class="fa fa-check"></i><b>6</b> Functions and For Loops</a></li>
+<li class="chapter" data-level="6" data-path="advanced-tools.html"><a href="advanced-tools.html"><i class="fa fa-check"></i><b>6</b> Advanced tools</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="advanced-tools.html"><a href="advanced-tools.html#conditional"><i class="fa fa-check"></i><b>6.1</b> Conditional</a></li>
+<li class="chapter" data-level="6.2" data-path="advanced-tools.html"><a href="advanced-tools.html#functions"><i class="fa fa-check"></i><b>6.2</b> Functions</a></li>
+<li class="chapter" data-level="6.3" data-path="advanced-tools.html"><a href="advanced-tools.html#for-loops"><i class="fa fa-check"></i><b>6.3</b> For loops</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="advanced-tools.html"><a href="advanced-tools.html#apply"><i class="fa fa-check"></i><b>6.3.1</b> Apply</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html"><i class="fa fa-check"></i><b>7</b> Data Exploration and QA/QC</a>
 <ul>
 <li class="chapter" data-level="7.1" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#data-exploration"><i class="fa fa-check"></i><b>7.1</b> Data Exploration</a></li>
@@ -193,6 +201,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="8.1.1" data-path="basic-stats.html"><a href="basic-stats.html#t-test"><i class="fa fa-check"></i><b>8.1.1</b> T-test</a></li>
 </ul></li>
+<li class="chapter" data-level="8.2" data-path="basic-stats.html"><a href="basic-stats.html#non-parametric-statistics"><i class="fa fa-check"></i><b>8.2</b> Non-parametric Statistics</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="glm-and-glmm.html"><a href="glm-and-glmm.html"><i class="fa fa-check"></i><b>9</b> GLM and GLMM</a></li>
 <li class="chapter" data-level="10" data-path="gam-and-gamm.html"><a href="gam-and-gamm.html"><i class="fa fa-check"></i><b>10</b> GAM and GAMM</a></li>
@@ -233,6 +242,7 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="13" data-path="time-series.html"><a href="time-series.html"><i class="fa fa-check"></i><b>13</b> Time Series</a></li>
 </ul>
 
       </nav>
@@ -269,13 +279,13 @@ div.csl-indent {
 <li><p>Click on <strong>Build Book</strong>, then select your output format, or select “All formats” if you’d like to use multiple formats from the same book source files.</p></li>
 </ol>
 <p>Or build the book from the R console:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="instructions.html#cb36-1" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">render_book</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="instructions.html#cb25-1" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">render_book</span>()</span></code></pre></div>
 <p>To render this example to PDF as a <code>bookdown::pdf_book</code>, you’ll need to install XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.org/tinytex/" class="uri">https://yihui.org/tinytex/</a>.</p>
 </div>
 <div id="preview-book" class="section level3" number="12.1.3">
 <h3><span class="header-section-number">12.1.3</span> Preview book</h3>
 <p>As you work, you may start a local server to live preview this HTML book. This preview will update as you edit the book when you save individual .Rmd files. You can start the server in a work session by using the RStudio add-in “Preview book,” or from the R console:</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="instructions.html#cb37-1" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">serve_book</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="instructions.html#cb26-1" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">serve_book</span>()</span></code></pre></div>
 </div>
 </div>
 <div id="introduction" class="section level2" number="12.2">
@@ -314,8 +324,8 @@ div.csl-indent {
 <h2><span class="header-section-number">12.4</span> Captioned figures and tables</h2>
 <p>Figures and tables <em>with captions</em> can also be cross-referenced from elsewhere in your book using <code>\@ref(fig:chunk-label)</code> and <code>\@ref(tab:chunk-label)</code>, respectively.</p>
 <p>See Figure <a href="instructions.html#fig:nice-fig">12.1</a>.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="instructions.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
-<span id="cb38-2"><a href="instructions.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="instructions.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, .<span class="dv">1</span>, .<span class="dv">1</span>))</span>
+<span id="cb27-2"><a href="instructions.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pressure, <span class="at">type =</span> <span class="st">&#39;b&#39;</span>, <span class="at">pch =</span> <span class="dv">19</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:nice-fig"></span>
 <img src="_main_files/figure-html/nice-fig-1.png" alt="Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases." width="80%" />
 <p class="caption">
@@ -323,10 +333,10 @@ Figure 12.1: Here is a nice figure!
 </p>
 </div>
 <p>Don’t miss Table <a href="instructions.html#tab:nice-tab">12.1</a>.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="instructions.html#cb39-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
-<span id="cb39-2"><a href="instructions.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(pressure, <span class="dv">10</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
-<span id="cb39-3"><a href="instructions.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
-<span id="cb39-4"><a href="instructions.html#cb39-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="instructions.html#cb28-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb28-2"><a href="instructions.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(pressure, <span class="dv">10</span>), <span class="at">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</span>
+<span id="cb28-3"><a href="instructions.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb28-4"><a href="instructions.html#cb28-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <table>
 <caption><span id="tab:nice-tab">Table 12.1: </span>Here is a nice table!</caption>
 <thead>
@@ -442,7 +452,7 @@ and <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</
 <p>Read more about the features of this output format here:</p>
 <p><a href="https://pkgs.rstudio.com/bookdown/reference/gitbook.html" class="uri">https://pkgs.rstudio.com/bookdown/reference/gitbook.html</a></p>
 <p>Or use:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="instructions.html#cb40-1" aria-hidden="true" tabindex="-1"></a>?bookdown<span class="sc">::</span>gitbook</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="instructions.html#cb29-1" aria-hidden="true" tabindex="-1"></a>?bookdown<span class="sc">::</span>gitbook</span></code></pre></div>
 
 </div>
 </div>
@@ -499,7 +509,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/12-instructions.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/13-instructions.Rmd",
 "text": "Edit"
 },
 "history": {
