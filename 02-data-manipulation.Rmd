@@ -1,1 +1,5 @@
 # Data Manipulation
+
+* Pivot wider and longer
+* Complete cases
+* Dplyr select, mutate, rename

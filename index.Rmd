@@ -5,7 +5,7 @@ description: |
   This book provides example code for stats and working with data in R.
   The HTML output format for this example is bookdown::gitbook,
   set in the _output.yml file.
-url: https://bookdown.org/yihui/bookdown
+url: https://emrr-dise.github.io/coding_bookdown/
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book

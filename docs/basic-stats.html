@@ -4,28 +4,28 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Basic Stats | Coding Bookdown for EMRR</title>
+  <title>Chapter 8 Basic Stats | Coding Bookdown for EMRR</title>
   <meta name="description" content="<p>This book provides example code for stats and working with data in R.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Basic Stats | Coding Bookdown for EMRR" />
+  <meta property="og:title" content="Chapter 8 Basic Stats | Coding Bookdown for EMRR" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://bookdown.org/yihui/bookdown" />
-  <meta property="og:image" content="https://bookdown.org/yihui/bookdown/images/yolo-cows.jpg" />
+  <meta property="og:url" content="https://emrr-dise.github.io/coding_bookdown/" />
+  <meta property="og:image" content="https://emrr-dise.github.io/coding_bookdown/images/yolo-cows.jpg" />
   <meta property="og:description" content="<p>This book provides example code for stats and working with data in R.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="github-repo" content="EMRR-DISE/coding_bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Basic Stats | Coding Bookdown for EMRR" />
+  <meta name="twitter:title" content="Chapter 8 Basic Stats | Coding Bookdown for EMRR" />
   
   <meta name="twitter:description" content="<p>This book provides example code for stats and working with data in R.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/bookdown/images/yolo-cows.jpg" />
+  <meta name="twitter:image" content="https://emrr-dise.github.io/coding_bookdown/images/yolo-cows.jpg" />
 
 <meta name="author" content="Catarina Pien" />
 
@@ -59,6 +59,13 @@ set in the _output.yml file.</p>" />
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -165,61 +172,67 @@ div.csl-indent {
 <li><a href="./">EMRR Coding Bookdown</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
-<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>3</b> Data Manipulation</a></li>
-<li class="chapter" data-level="4" data-path="making-plots.html"><a href="making-plots.html"><i class="fa fa-check"></i><b>4</b> Making Plots</a></li>
-<li class="chapter" data-level="5" data-path="interactive-tools.html"><a href="interactive-tools.html"><i class="fa fa-check"></i><b>5</b> Interactive Tools</a></li>
-<li class="chapter" data-level="6" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>6</b> Making Maps</a></li>
-<li class="chapter" data-level="7" data-path="functions-and-for-loops.html"><a href="functions-and-for-loops.html"><i class="fa fa-check"></i><b>7</b> Functions and For Loops</a></li>
-<li class="chapter" data-level="8" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html"><i class="fa fa-check"></i><b>8</b> Data Exploration and QA/QC</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="basics-of-r.html"><a href="basics-of-r.html"><i class="fa fa-check"></i><b>1</b> Basics of R</a></li>
+<li class="chapter" data-level="2" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data Manipulation</a></li>
+<li class="chapter" data-level="3" data-path="making-plots.html"><a href="making-plots.html"><i class="fa fa-check"></i><b>3</b> Making Plots</a></li>
+<li class="chapter" data-level="4" data-path="interactive-tools.html"><a href="interactive-tools.html"><i class="fa fa-check"></i><b>4</b> Interactive Tools</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#data-exploration"><i class="fa fa-check"></i><b>8.1</b> Data Exploration</a></li>
-<li class="chapter" data-level="8.2" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#qaqc"><i class="fa fa-check"></i><b>8.2</b> QA/QC</a></li>
+<li class="chapter" data-level="4.1" data-path="interactive-tools.html"><a href="interactive-tools.html#plotly---interactive-plotting"><i class="fa fa-check"></i><b>4.1</b> Plotly - Interactive plotting</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="basic-stats.html"><a href="basic-stats.html"><i class="fa fa-check"></i><b>9</b> Basic Stats</a></li>
-<li class="chapter" data-level="10" data-path="glm-and-glmm.html"><a href="glm-and-glmm.html"><i class="fa fa-check"></i><b>10</b> GLM and GLMM</a></li>
-<li class="chapter" data-level="11" data-path="gam-and-gamm.html"><a href="gam-and-gamm.html"><i class="fa fa-check"></i><b>11</b> GAM and GAMM</a></li>
-<li class="chapter" data-level="12" data-path="multivariate-stats.html"><a href="multivariate-stats.html"><i class="fa fa-check"></i><b>12</b> Multivariate Stats</a></li>
-<li class="chapter" data-level="13" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i><b>13</b> Instructions</a>
+<li class="chapter" data-level="5" data-path="making-maps.html"><a href="making-maps.html"><i class="fa fa-check"></i><b>5</b> Making Maps</a></li>
+<li class="chapter" data-level="6" data-path="functions-and-for-loops.html"><a href="functions-and-for-loops.html"><i class="fa fa-check"></i><b>6</b> Functions and For Loops</a></li>
+<li class="chapter" data-level="7" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html"><i class="fa fa-check"></i><b>7</b> Data Exploration and QA/QC</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="instructions.html"><a href="instructions.html#about-1"><i class="fa fa-check"></i><b>13.1</b> About</a>
-<ul>
-<li class="chapter" data-level="13.1.1" data-path="instructions.html"><a href="instructions.html#usage"><i class="fa fa-check"></i><b>13.1.1</b> Usage</a></li>
-<li class="chapter" data-level="13.1.2" data-path="instructions.html"><a href="instructions.html#render-book"><i class="fa fa-check"></i><b>13.1.2</b> Render book</a></li>
-<li class="chapter" data-level="13.1.3" data-path="instructions.html"><a href="instructions.html#preview-book"><i class="fa fa-check"></i><b>13.1.3</b> Preview book</a></li>
+<li class="chapter" data-level="7.1" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#data-exploration"><i class="fa fa-check"></i><b>7.1</b> Data Exploration</a></li>
+<li class="chapter" data-level="7.2" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#qaqc"><i class="fa fa-check"></i><b>7.2</b> QA/QC</a></li>
 </ul></li>
-<li class="chapter" data-level="13.2" data-path="instructions.html"><a href="instructions.html#introduction-1"><i class="fa fa-check"></i><b>13.2</b> Introduction</a>
+<li class="chapter" data-level="8" data-path="basic-stats.html"><a href="basic-stats.html"><i class="fa fa-check"></i><b>8</b> Basic Stats</a>
 <ul>
-<li class="chapter" data-level="13.2.1" data-path="instructions.html"><a href="instructions.html#a-section"><i class="fa fa-check"></i><b>13.2.1</b> A section</a></li>
+<li class="chapter" data-level="8.1" data-path="basic-stats.html"><a href="basic-stats.html#parametric-stats"><i class="fa fa-check"></i><b>8.1</b> Parametric Stats</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="basic-stats.html"><a href="basic-stats.html#t-test"><i class="fa fa-check"></i><b>8.1.1</b> T-test</a></li>
 </ul></li>
-<li class="chapter" data-level="13.3" data-path="instructions.html"><a href="instructions.html#cross-references-and-chapters"><i class="fa fa-check"></i><b>13.3</b> Cross references and chapters</a>
-<ul>
-<li class="chapter" data-level="13.3.1" data-path="instructions.html"><a href="instructions.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>13.3.1</b> Chapters and sub-chapters</a></li>
 </ul></li>
-<li class="chapter" data-level="13.4" data-path="instructions.html"><a href="instructions.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>13.4</b> Captioned figures and tables</a></li>
-<li class="chapter" data-level="13.5" data-path="instructions.html"><a href="instructions.html#parts"><i class="fa fa-check"></i><b>13.5</b> Parts</a></li>
-<li class="chapter" data-level="13.6" data-path="instructions.html"><a href="instructions.html#footnotes-and-citations"><i class="fa fa-check"></i><b>13.6</b> Footnotes and Citations</a>
+<li class="chapter" data-level="9" data-path="glm-and-glmm.html"><a href="glm-and-glmm.html"><i class="fa fa-check"></i><b>9</b> GLM and GLMM</a></li>
+<li class="chapter" data-level="10" data-path="gam-and-gamm.html"><a href="gam-and-gamm.html"><i class="fa fa-check"></i><b>10</b> GAM and GAMM</a></li>
+<li class="chapter" data-level="11" data-path="multivariate-stats.html"><a href="multivariate-stats.html"><i class="fa fa-check"></i><b>11</b> Multivariate Stats</a></li>
+<li class="chapter" data-level="12" data-path="instructions.html"><a href="instructions.html"><i class="fa fa-check"></i><b>12</b> Instructions</a>
 <ul>
-<li class="chapter" data-level="13.6.1" data-path="instructions.html"><a href="instructions.html#footnotes"><i class="fa fa-check"></i><b>13.6.1</b> Footnotes</a></li>
-<li class="chapter" data-level="13.6.2" data-path="instructions.html"><a href="instructions.html#citations"><i class="fa fa-check"></i><b>13.6.2</b> Citations</a></li>
+<li class="chapter" data-level="12.1" data-path="instructions.html"><a href="instructions.html#about"><i class="fa fa-check"></i><b>12.1</b> About</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="instructions.html"><a href="instructions.html#usage"><i class="fa fa-check"></i><b>12.1.1</b> Usage</a></li>
+<li class="chapter" data-level="12.1.2" data-path="instructions.html"><a href="instructions.html#render-book"><i class="fa fa-check"></i><b>12.1.2</b> Render book</a></li>
+<li class="chapter" data-level="12.1.3" data-path="instructions.html"><a href="instructions.html#preview-book"><i class="fa fa-check"></i><b>12.1.3</b> Preview book</a></li>
 </ul></li>
-<li class="chapter" data-level="13.7" data-path="instructions.html"><a href="instructions.html#blocks"><i class="fa fa-check"></i><b>13.7</b> Blocks</a>
+<li class="chapter" data-level="12.2" data-path="instructions.html"><a href="instructions.html#introduction"><i class="fa fa-check"></i><b>12.2</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="13.7.1" data-path="instructions.html"><a href="instructions.html#equations"><i class="fa fa-check"></i><b>13.7.1</b> Equations</a></li>
-<li class="chapter" data-level="13.7.2" data-path="instructions.html"><a href="instructions.html#theorems-and-proofs"><i class="fa fa-check"></i><b>13.7.2</b> Theorems and proofs</a></li>
-<li class="chapter" data-level="13.7.3" data-path="instructions.html"><a href="instructions.html#callout-blocks"><i class="fa fa-check"></i><b>13.7.3</b> Callout blocks</a></li>
+<li class="chapter" data-level="12.2.1" data-path="instructions.html"><a href="instructions.html#a-section"><i class="fa fa-check"></i><b>12.2.1</b> A section</a></li>
 </ul></li>
-<li class="chapter" data-level="13.8" data-path="instructions.html"><a href="instructions.html#publishing"><i class="fa fa-check"></i><b>13.8</b> Publishing</a>
+<li class="chapter" data-level="12.3" data-path="instructions.html"><a href="instructions.html#cross-references-and-chapters"><i class="fa fa-check"></i><b>12.3</b> Cross references and chapters</a>
 <ul>
-<li class="chapter" data-level="13.8.1" data-path="instructions.html"><a href="instructions.html#pages"><i class="fa fa-check"></i><b>13.8.1</b> 404 pages</a></li>
-<li class="chapter" data-level="13.8.2" data-path="instructions.html"><a href="instructions.html#metadata-for-sharing"><i class="fa fa-check"></i><b>13.8.2</b> Metadata for sharing</a></li>
+<li class="chapter" data-level="12.3.1" data-path="instructions.html"><a href="instructions.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>12.3.1</b> Chapters and sub-chapters</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="instructions.html"><a href="instructions.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>12.4</b> Captioned figures and tables</a></li>
+<li class="chapter" data-level="12.5" data-path="instructions.html"><a href="instructions.html#parts"><i class="fa fa-check"></i><b>12.5</b> Parts</a></li>
+<li class="chapter" data-level="12.6" data-path="instructions.html"><a href="instructions.html#footnotes-and-citations"><i class="fa fa-check"></i><b>12.6</b> Footnotes and Citations</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="instructions.html"><a href="instructions.html#footnotes"><i class="fa fa-check"></i><b>12.6.1</b> Footnotes</a></li>
+<li class="chapter" data-level="12.6.2" data-path="instructions.html"><a href="instructions.html#citations"><i class="fa fa-check"></i><b>12.6.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="instructions.html"><a href="instructions.html#blocks"><i class="fa fa-check"></i><b>12.7</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="12.7.1" data-path="instructions.html"><a href="instructions.html#equations"><i class="fa fa-check"></i><b>12.7.1</b> Equations</a></li>
+<li class="chapter" data-level="12.7.2" data-path="instructions.html"><a href="instructions.html#theorems-and-proofs"><i class="fa fa-check"></i><b>12.7.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="12.7.3" data-path="instructions.html"><a href="instructions.html#callout-blocks"><i class="fa fa-check"></i><b>12.7.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="instructions.html"><a href="instructions.html#publishing"><i class="fa fa-check"></i><b>12.8</b> Publishing</a>
+<ul>
+<li class="chapter" data-level="12.8.1" data-path="instructions.html"><a href="instructions.html#pages"><i class="fa fa-check"></i><b>12.8.1</b> 404 pages</a></li>
+<li class="chapter" data-level="12.8.2" data-path="instructions.html"><a href="instructions.html#metadata-for-sharing"><i class="fa fa-check"></i><b>12.8.2</b> Metadata for sharing</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -237,9 +250,152 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="basic-stats" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Basic Stats</h1>
+<div id="basic-stats" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Basic Stats</h1>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-stats.html#cb19-1" aria-hidden="true" tabindex="-1"></a>fish_yolo_url <span class="ot">&lt;-</span> <span class="st">&quot;https://portal.edirepository.org/nis/dataviewer?packageid=edi.233.2&amp;entityid=015e494911cf35c90089ced5a3127334&quot;</span></span>
+<span id="cb19-2"><a href="basic-stats.html#cb19-2" aria-hidden="true" tabindex="-1"></a>fish_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(fish_yolo_url)</span></code></pre></div>
+<pre><code>## Warning: One or more parsing issues, see `problems()` for details</code></pre>
+<pre><code>## Rows: 182414 Columns: 32</code></pre>
+<pre><code>## -- Column specification --------------------------------------------------------
+## Delimiter: &quot;,&quot;
+## chr  (16): SampleDate, StationCode, MethodCode, GearID, CommonName, Genetica...
+## dbl  (13): ForkLength, Count, GearConditionCode, WaterTemperature, Secchi, C...
+## lgl   (2): GeneticID, CWTSample
+## time  (1): SampleTime</code></pre>
+<pre><code>## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="basic-stats.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(fish_data)</span></code></pre></div>
+<pre><code>## spec_tbl_df [182,414 x 32] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ SampleDate          : chr [1:182414] &quot;1/16/1998&quot; &quot;1/16/1998&quot; &quot;1/19/1998&quot; &quot;1/19/1998&quot; ...
+##  $ SampleTime          : &#39;hms&#39; num [1:182414] 14:05:00 15:00:00 12:17:00 12:17:00 ...
+##   ..- attr(*, &quot;units&quot;)= chr &quot;secs&quot;
+##  $ StationCode         : chr [1:182414] &quot;YB&quot; &quot;YB&quot; &quot;YB&quot; &quot;YB&quot; ...
+##  $ MethodCode          : chr [1:182414] &quot;BSEIN&quot; &quot;BSEIN&quot; &quot;FNET&quot; &quot;FNET&quot; ...
+##  $ GearID              : chr [1:182414] &quot;SEIN50&quot; &quot;SEIN50&quot; &quot;FKNT&quot; &quot;FKNT&quot; ...
+##  $ CommonName          : chr [1:182414] &quot;Threadfin Shad&quot; &quot;Inland Silverside&quot; &quot;Threadfin Shad&quot; &quot;Chinook Salmon&quot; ...
+##  $ GeneticallyConfirmed: chr [1:182414] &quot;No&quot; &quot;No&quot; &quot;No&quot; &quot;No&quot; ...
+##  $ GeneticID           : logi [1:182414] NA NA NA NA NA NA ...
+##  $ Field_ID_CommonName : chr [1:182414] &quot;Threadfin Shad&quot; &quot;Inland Silverside&quot; &quot;Threadfin Shad&quot; &quot;Chinook Salmon&quot; ...
+##  $ ForkLength          : num [1:182414] 90 73 88 38 71 62 58 50 81 49 ...
+##  $ Count               : num [1:182414] 1 1 1 1 1 1 1 1 1 1 ...
+##  $ FishSex             : chr [1:182414] NA NA NA NA ...
+##  $ Race                : chr [1:182414] &quot;n/p&quot; &quot;n/p&quot; &quot;n/p&quot; &quot;n/p&quot; ...
+##  $ MarkCode            : chr [1:182414] &quot;n/p&quot; &quot;n/p&quot; &quot;n/p&quot; &quot;n/p&quot; ...
+##  $ CWTSample           : logi [1:182414] FALSE FALSE FALSE FALSE FALSE FALSE ...
+##  $ FishTagID           : chr [1:182414] NA NA NA NA ...
+##  $ StageCode           : chr [1:182414] &quot;n/p&quot; &quot;n/p&quot; &quot;n/p&quot; &quot;CHN_P&quot; ...
+##  $ Dead                : chr [1:182414] &quot;No&quot; &quot;No&quot; &quot;No&quot; &quot;No&quot; ...
+##  $ GearConditionCode   : num [1:182414] 3 3 1 1 1 1 1 1 1 1 ...
+##  $ WeatherCode         : chr [1:182414] &quot;CLD&quot; &quot;CLD&quot; &quot;RAN&quot; &quot;RAN&quot; ...
+##  $ WaterTemperature    : num [1:182414] 11.7 11.7 11.1 11.1 11.1 ...
+##  $ Secchi              : num [1:182414] NA NA 0.16 0.16 0.07 ...
+##  $ Conductivity        : num [1:182414] NA NA NA NA NA NA NA NA NA NA ...
+##  $ SpCnd               : num [1:182414] NA NA NA NA NA NA NA NA NA NA ...
+##  $ DO                  : num [1:182414] NA NA NA NA NA NA NA NA NA NA ...
+##  $ pH                  : num [1:182414] NA NA NA NA NA NA NA NA NA NA ...
+##  $ Turbidity           : num [1:182414] NA NA NA NA NA NA NA NA NA NA ...
+##  $ SubstrateCode       : chr [1:182414] &quot;VG&quot; &quot;MD&quot; NA NA ...
+##  $ Tide                : chr [1:182414] NA NA NA NA ...
+##  $ VolumeSeined        : num [1:182414] NA NA NA NA NA NA NA NA NA NA ...
+##  $ Latitude            : num [1:182414] 38.6 38.6 NA NA NA ...
+##  $ Longitude           : num [1:182414] -122 -122 NA NA NA ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   SampleDate = col_character(),
+##   ..   SampleTime = col_time(format = &quot;&quot;),
+##   ..   StationCode = col_character(),
+##   ..   MethodCode = col_character(),
+##   ..   GearID = col_character(),
+##   ..   CommonName = col_character(),
+##   ..   GeneticallyConfirmed = col_character(),
+##   ..   GeneticID = col_logical(),
+##   ..   Field_ID_CommonName = col_character(),
+##   ..   ForkLength = col_double(),
+##   ..   Count = col_double(),
+##   ..   FishSex = col_character(),
+##   ..   Race = col_character(),
+##   ..   MarkCode = col_character(),
+##   ..   CWTSample = col_logical(),
+##   ..   FishTagID = col_character(),
+##   ..   StageCode = col_character(),
+##   ..   Dead = col_character(),
+##   ..   GearConditionCode = col_double(),
+##   ..   WeatherCode = col_character(),
+##   ..   WaterTemperature = col_double(),
+##   ..   Secchi = col_double(),
+##   ..   Conductivity = col_double(),
+##   ..   SpCnd = col_double(),
+##   ..   DO = col_double(),
+##   ..   pH = col_double(),
+##   ..   Turbidity = col_double(),
+##   ..   SubstrateCode = col_character(),
+##   ..   Tide = col_character(),
+##   ..   VolumeSeined = col_double(),
+##   ..   Latitude = col_double(),
+##   ..   Longitude = col_double()
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="basic-stats.html#cb26-1" aria-hidden="true" tabindex="-1"></a>fish_lmb <span class="ot">&lt;-</span> fish_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(CommonName <span class="sc">==</span> <span class="st">&quot;Largemouth Bass&quot;</span>)</span>
+<span id="cb26-2"><a href="basic-stats.html#cb26-2" aria-hidden="true" tabindex="-1"></a>fish_lmb2 <span class="ot">&lt;-</span> fish_lmb <span class="sc">%&gt;%</span> <span class="fu">filter</span>(MethodCode <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;BSEIN&quot;</span>, <span class="st">&quot;RSTR&quot;</span>))</span></code></pre></div>
+<div id="parametric-stats" class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Parametric Stats</h2>
+<div id="t-test" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> T-test</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="basic-stats.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="do">### 1. Independent-samples t-test: Is there a difference in LMB Count by Method? ----------------</span></span>
+<span id="cb27-2"><a href="basic-stats.html#cb27-2" aria-hidden="true" tabindex="-1"></a>(lmb.ttest <span class="ot">&lt;-</span> <span class="fu">t.test</span>(fish_lmb2<span class="sc">$</span>Count<span class="sc">~</span>fish_lmb2<span class="sc">$</span>MethodCode)) <span class="co"># not significant</span></span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  fish_lmb2$Count by fish_lmb2$MethodCode
+## t = -2.4938, df = 372.14, p-value = 0.01307
+## alternative hypothesis: true difference in means between group BSEIN and group RSTR is not equal to 0
+## 95 percent confidence interval:
+##  -1.6055186 -0.1898624
+## sample estimates:
+## mean in group BSEIN  mean in group RSTR 
+##            1.146387            2.044077</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="basic-stats.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb29-2"><a href="basic-stats.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_lmb2, <span class="fu">aes</span>(<span class="at">x =</span> MethodCode, <span class="at">y =</span> Count)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/ttest-1.png" width="672" /></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="basic-stats.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_lmb2, <span class="fu">aes</span>(<span class="at">x =</span> Count, <span class="at">color =</span> MethodCode)) <span class="sc">+</span> <span class="fu">geom_density</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/ttest-2.png" width="672" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="basic-stats.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fish_lmb, <span class="fu">aes</span>(<span class="at">x =</span> MethodCode, <span class="at">y =</span> Count)) <span class="sc">+</span> <span class="fu">geom_col</span>() <span class="co"># This works best for data with lots of zeros</span></span></code></pre></div>
+<p><img src="_main_files/figure-html/ttest-3.png" width="672" /></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="basic-stats.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">### 2. Paired t-test: Does a treatment cause a difference? Did Action Phase alter Count of LMB? -------------</span></span>
+<span id="cb32-2"><a href="basic-stats.html#cb32-2" aria-hidden="true" tabindex="-1"></a>(lmb.ttest2 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(fish_lmb2<span class="sc">$</span>Count <span class="sc">~</span> fish_lmb2<span class="sc">$</span>MethodCode)) <span class="co"># significant</span></span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  fish_lmb2$Count by fish_lmb2$MethodCode
+## t = -2.4938, df = 372.14, p-value = 0.01307
+## alternative hypothesis: true difference in means between group BSEIN and group RSTR is not equal to 0
+## 95 percent confidence interval:
+##  -1.6055186 -0.1898624
+## sample estimates:
+## mean in group BSEIN  mean in group RSTR 
+##            1.146387            2.044077</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="basic-stats.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot: Figure out the direction of the trend</span></span>
+<span id="cb34-2"><a href="basic-stats.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(fish_lmb2, aes(x = ActionPhase, y = Count)) + geom_boxplot()</span></span>
+<span id="cb34-3"><a href="basic-stats.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(fish_lmb2, aes(x = Count, color = ActionPhase)) + geom_density()</span></span>
+<span id="cb34-4"><a href="basic-stats.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(fish_lmb2, aes(x = ActionPhase, y = Count)) + geom_col() # This works best for data with lots of zeros</span></span>
+<span id="cb34-5"><a href="basic-stats.html#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="basic-stats.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="do">### 3. One-sample t-test: Is the Count greater than 0? ---------------------------------------</span></span>
+<span id="cb34-7"><a href="basic-stats.html#cb34-7" aria-hidden="true" tabindex="-1"></a>(lmb.ttest3 <span class="ot">&lt;-</span> <span class="fu">t.test</span>(fish_lmb2<span class="sc">$</span>Count, <span class="at">mu =</span> <span class="dv">0</span>)) <span class="co"># p &lt; 0.05, Yes, it is</span></span></code></pre></div>
+<pre><code>## 
+##  One Sample t-test
+## 
+## data:  fish_lmb2$Count
+## t = 17.633, df = 1981, p-value &lt; 2.2e-16
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  1.165012 1.456583
+## sample estimates:
+## mean of x 
+##  1.310797</code></pre>
 
+</div>
+</div>
 </div>
             </section>
 
@@ -295,7 +451,8 @@ gitbook.start({
 "options": null
 },
 "toc": {
-"collapse": "subsection"
+"collapse": "subsection",
+"scroll_highlight": true
 }
 });
 });

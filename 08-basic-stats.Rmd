@@ -1,2 +1,40 @@
 # Basic Stats
 
+```{r}
+fish_yolo_url <- "https://portal.edirepository.org/nis/dataviewer?packageid=edi.233.2&entityid=015e494911cf35c90089ced5a3127334"
+fish_data <- readr::read_csv(fish_yolo_url)
+str(fish_data)
+fish_lmb <- fish_data %>% filter(CommonName == "Largemouth Bass")
+fish_lmb2 <- fish_lmb %>% filter(MethodCode %in% c("BSEIN", "RSTR"))
+```
+
+
+## Parametric Stats
+
+
+
+
+### T-test
+```{r ttest, warning = FALSE, message = FALSE}
+
+### 1. Independent-samples t-test: Is there a difference in LMB Count by Method? ----------------
+(lmb.ttest <- t.test(fish_lmb2$Count~fish_lmb2$MethodCode)) # not significant
+
+# Plot
+ggplot(fish_lmb2, aes(x = MethodCode, y = Count)) + geom_boxplot()
+ggplot(fish_lmb2, aes(x = Count, color = MethodCode)) + geom_density()
+ggplot(fish_lmb, aes(x = MethodCode, y = Count)) + geom_col() # This works best for data with lots of zeros
+
+### 2. Paired t-test: Does a treatment cause a difference? Did Action Phase alter Count of LMB? -------------
+(lmb.ttest2 <- t.test(fish_lmb2$Count ~ fish_lmb2$MethodCode)) # significant
+
+# Plot: Figure out the direction of the trend
+# ggplot(fish_lmb2, aes(x = ActionPhase, y = Count)) + geom_boxplot()
+# ggplot(fish_lmb2, aes(x = Count, color = ActionPhase)) + geom_density()
+# ggplot(fish_lmb2, aes(x = ActionPhase, y = Count)) + geom_col() # This works best for data with lots of zeros
+
+### 3. One-sample t-test: Is the Count greater than 0? ---------------------------------------
+(lmb.ttest3 <- t.test(fish_lmb2$Count, mu = 0)) # p < 0.05, Yes, it is
+
+```
+

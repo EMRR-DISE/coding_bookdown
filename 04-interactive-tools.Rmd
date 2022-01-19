@@ -1,1 +1,47 @@
 # Interactive Tools
+
+## Plotly - Interactive plotting
+
+```{r}
+library(tidyverse)
+library(lubridate)
+library(plotly)
+```
+
+Make a plot. 
+Use plotly to make plot interactive.
+```{r}
+iris1 <- ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) + geom_point()
+ggplotly(iris1)
+```
+
+Changing hover text
+https://plotly.com/r/hover-text-and-formatting/
+https://stackoverflow.com/questions/36325154/how-to-choose-variable-to-display-in-tooltip-when-using-ggplotly
+
+```{r}
+# Use label = to add extra variables in the label in addition to what's in the aes()
+iris2 <- ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species, label = Petal.Length)) + geom_point()
+
+ggplotly(iris2)
+
+
+# To customize how you label text, write what you want in text = 
+# <br> = line  break
+iris3 <- ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width,
+                    text = paste('Name of species: ', Species,
+                                 '<br>Petal length: ', Petal.Length)))+
+  geom_point()
+
+
+# customize whether you want to display x, y, and text, or just text
+ggplotly(iris3)
+ggplotly(iris3, tooltip = "text") 
+ggplotly(iris3, tooltip = c("x", "text"))
+
+
+# Use tooltip = NULL to get rid of all tooltip 
+ggplotly(iris3, tooltip = NULL)
+
+
+```

@@ -4,3 +4,8 @@
 * Reading in data from csv, excel
 * Reading data from online
 * Writing data
+* Column formats (character, numeric, datetime, factor)
+* Datetimes
+
+
+
