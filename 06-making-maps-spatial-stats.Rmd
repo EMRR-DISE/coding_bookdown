@@ -1,2 +1,242 @@
-# Making Maps
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Spatial data and making maps
+
+We will cover:
+1. Basics of using sf package, converting lat/lon to a spatial data frame.
+2. Importing shapefiles
+3. Making a map of your lats/lons
+4. Add inset map
+5. Add scale bar, north arrow, labels
+6. Add basemap
+7. Writing map image and map files 
+
+
+Packages
+```{r}
+library(ggplot2)
+library(dplyr)
+library(sf)
+library(viridis)
+```
+
+## Load data
+
+Latitude/Longitude data from IEP zooplankton data
+```{r}
+# Latitude/Longitude data
+stations_URL <- "https://portal.edirepository.org/nis/dataviewer?packageid=edi.539.3&entityid=343cb43b41eb112ac36b605f1cff1f92"
+
+# Create a fake n variable to have something to plot.
+stations <- readr::read_csv(stations_URL) %>%
+  mutate(n = round(runif(n = 1:nrow(.), min = 1, max = 100),0)) %>%
+  mutate(Source = factor(Source)) %>%
+  filter(!is.na(Latitude))
+
+dplyr::glimpse(stations)
+
+# create a subset of stations
+stationlist_filt <- sample_n(stations, 20) %>% select(Station)
+stationlist_filt <- stationlist_filt$Station
+```
+
+Shapefiles
+```{r}
+# Delta waterways
+library(deltamapr)
+plot(WW_Delta)
+glimpse(WW_Delta)
+
+# Regions
+Regions <- deltamapr::R_EDSM_Subregions_Mahardja_FLOAT
+plot(Regions)
+glimpse(Regions)
+
+# States
+library(USAboundaries)
+California_sf <- us_states(states = "California")
+plot(California_sf[1])
+```
+
+## Get data into spatial form
+```{r}
+# Define the projection of your points, usually WGS 84 (= crs 4326)
+stations_sf <- st_as_sf(stations, coords = c("Longitude", "Latitude"), crs = 4326)
+
+# Look at shapefile
+head(stations_sf)
+plot(stations_sf$geometry)
+plot(stations_sf)
+```
+
+
+### Spatial projections
+
+You want to make sure all your different files are in the same projection, or they will look mis-aligned.
+```{r}
+st_crs(WW_Delta) # In 4269
+st_crs(stations_sf) # In 4326
+st_crs(California_sf) # In 4326
+
+stations_4269 <- st_transform(stations_sf, crs = 4269)
+california_4269 <- st_transform(California_sf, crs = 4269)
+```
+
+## Basic Spatial Operations
+
+Assign points to regions
+```{r}
+
+```
+
+Nearest neighbor
+```{r}
+
+```
+
+Intersections
+```{r}
+
+```
+
+
+## Make maps
+
+### Basic maps
+
+Color by Monitoring Program
+```{r}
+ggplot() +
+    geom_sf(data = WW_Delta) +
+    geom_sf(data = stations_4269, aes(fill = Source), shape = 21) + 
+    scale_fill_viridis(discrete = TRUE) + 
+    ggtitle("Number of Zooplankton Samples by Station") +
+    theme_bw()
+```
+
+You can also modify the size of the points by size
+```{r}
+# Making a smaller dataset
+stations_filtered_4269 <- stations_4269 %>%
+  filter(Station %in% stationlist_filt)
+
+(simplemap <- ggplot() +
+    geom_sf(data = WW_Delta, fill = "lightblue", color = "lightblue") +
+    geom_sf(data = stations_filtered_4269, aes(fill = Source, size = n), shape = 21, alpha = 0.7) + 
+    scale_fill_viridis(discrete = TRUE, option = "plasma") + 
+    scale_size_continuous(range = c(0,3)) + 
+    ggtitle("Number of Zooplankton Samples by Station") +
+    theme_bw())
+```
+
+You can add region delineations as well
+```{r}
+ggplot() +
+    geom_sf(data = WW_Delta, fill = "lightblue", color = "lightblue") +
+    geom_sf(data = Regions, aes(color = Region), alpha = 0.3) +
+    geom_sf(data = stations_filtered_4269, aes(fill = Source, size = n), shape = 21) + 
+    scale_fill_viridis(discrete = TRUE, option = "plasma") + 
+  scale_color_viridis(discrete = TRUE, option = "turbo") +
+    scale_size_continuous(range = c(0,3)) + 
+    ggtitle("Number of Zooplankton Samples by Station") +
+    theme_bw()
+```
+
+
+### Add arrows and scale bars, dotted lines
+```{r}
+require(ggspatial)
+# https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html
+
+(simplemap2 <- simplemap + 
+  annotation_north_arrow(location = "tr", which_north = "true", 
+        pad_x = unit(0.1, "in"), pad_y = unit(0.1, "in"),
+        style = north_arrow_fancy_orienteering) +
+  annotation_scale(location = "bl", bar_cols = c("pink", "white", "pink", "white")) +
+  theme(axis.title = element_blank(),
+        panel.grid.major = element_line(color = "grey80", linetype = "dashed", size = 0.5)))
+```
+
+### Add labels to map
+```{r}
+# Adding text
+simplemap2 + 
+  geom_text(data = filter(stations, Station %in% stationlist_filt), aes(x = Longitude, y = Latitude, label = Station), size = 2, check_overlap = FALSE, color = "darkblue", nudge_x = 0.02, nudge_y = 0.02) + 
+ annotate(geom = "text", x = -122.4, y = 37.85, label = "San Francisco Bay", fontface = "italic", color = "grey22", size = 3.5 ) 
+```
+
+### Add inset map
+```{r}
+# Figure out boundary box for your stations; perhaps add a small buffer
+insetbbox0 = st_as_sfc(st_bbox(WW_Delta))
+insetbbox = st_buffer(insetbbox0, 0.2)
+
+(inset <- ggplot() + 
+  geom_sf(data = california_4269, fill = "white") +
+  geom_sf(data = insetbbox0, fill = NA, color = "red", size = 0.5) +
+  theme_void())
+```
+
+Combine main map with inset map
+
+Will need to play with where you want the inset to be so as not to overlap with your map
+```{r}
+library(cowplot)
+inset_map = ggdraw() +
+  draw_plot(simplemap2) +
+  draw_plot(inset, x = 0.15, y = 0.63, width = 0.3, height = 0.3)
+
+inset_map
+```
+
+## Basemaps
+Download basemaps from get_stamenmap
+```{r}
+library(ggmap)
+```
+
+Define coordinate bounding box. You could also use lat/lon if you want.
+```{r}
+buffer = 0.2
+coordDict = list( 
+    'minLat' = min(stations$Latitude) - buffer,
+    'maxLat' = max(stations$Latitude) -0.1,
+    'minLon' = min(stations$Longitude) - buffer,
+    'maxLon' = max(stations$Longitude) + buffer
+)
+
+# Create map object using your bounded coordinates
+map_obj <- get_stamenmap(
+  bbox = c(left = coordDict[['minLon']], bottom = coordDict[['minLat']], right = coordDict[['maxLon']], top = coordDict[['maxLat']]), # the bounding box
+  zoom = 9, # zoom lvl; higher number = more detail (but also more processing power)
+  maptype = 'terrain-background'# type of basemap; 'terrain' is my default, but check help(get_stamenmap) for a full list
+  )
+```
+
+Plot your basemap
+```{r}
+# Plot the map
+map <- ggmap(map_obj, legend = "right")
+map
+```
+
+Add basemap to earlier map.
+```{r}
+map2 <- ggmap(map_obj) +
+    geom_sf(data = WW_Delta, fill = "lightblue", color = "lightblue", inherit.aes = FALSE) + 
+    geom_sf(data = stations_filtered_4269, aes(fill = Source), shape = 21, alpha = 0.7, size = 2.5, inherit.aes = FALSE) + 
+ annotate(geom = "text", x = -122.4, y = 37.85, label = "San Francisco Bay", fontface = "italic", color = "grey22", size = 3.5 ) +
+  annotation_north_arrow(location = "tr", which_north = "true", 
+        pad_x = unit(0.1, "in"), pad_y = unit(0.1, "in"),
+        style = north_arrow_fancy_orienteering) +
+  annotation_scale(location = "bl", bar_cols = c("black", "white", "black", "white")) +
+    scale_fill_viridis(discrete = TRUE, option = "plasma") + 
+    ggtitle("Number of Zooplankton Samples by Station") +
+    theme_bw()+ theme(axis.title = element_blank(),
+        panel.grid.major = element_line(color = "grey80", linetype = "dashed", size = 0.5))
+map2
+```
 

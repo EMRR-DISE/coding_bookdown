@@ -1,47 +1,221 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Interactive Tools
+
+    Here are some tools to help with interactive viewing of data. We use plotly for visualizing data in gpplot, and leaflet and mapview for visualizing spatial data. 
 
 ## Plotly - Interactive plotting
 
+Load packages.
 ```{r , warning = FALSE, message = FALSE}
-library(tidyverse)
+library(ggplot2)
 library(lubridate)
 library(plotly)
 ```
 
+We are using the iris dataset that comes with R.
+```{r}
+head(iris)
+```
+
 Make a plot. 
-Use plotly to make plot interactive.
 ```{r, warning = FALSE, message = FALSE}
 iris1 <- ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) + geom_point()
+```
+
+Use plotly to make plot interactive. 
+You can draw a box around an area to zoom in, double click on plot to zoom back out. 
+If you click on virginica in the legend it will remove that from the plot.
+```{r}
 ggplotly(iris1)
 ```
 
-Changing hover text
-https://plotly.com/r/hover-text-and-formatting/
-https://stackoverflow.com/questions/36325154/how-to-choose-variable-to-display-in-tooltip-when-using-ggplotly
-
-```{r, warning = FALSE, message = FALSE}
-# Use label = to add extra variables in the label in addition to what's in the aes()
+You might want to change what shows up when you hover over the point. You can do this by adding the "label" parameter to your aes() call.
+```{r}
 iris2 <- ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species, label = Petal.Length)) + geom_point()
-
 ggplotly(iris2)
+```
 
+If you want even more customization of what shows up, you can use the "text" parameter in your aes() call. You can then customize the combination of what shows up: x, y, text.
 
-# To customize how you label text, write what you want in text = 
-# <br> = line  break
+Note '<br>' inserts a line break into your popup. 
+```{r, warning = FALSE, message = FALSE}
 iris3 <- ggplot(data = iris, aes(x = Sepal.Length, y = Sepal.Width,
                     text = paste('Name of species: ', Species,
                                  '<br>Petal length: ', Petal.Length)))+
   geom_point()
 
-
 # customize whether you want to display x, y, and text, or just text
 ggplotly(iris3)
 ggplotly(iris3, tooltip = "text") 
 ggplotly(iris3, tooltip = c("x", "text"))
+```
 
-
+If you don't want the popup at all, you can also get rid of it. 
+```{r}
 # Use tooltip = NULL to get rid of all tooltip 
 ggplotly(iris3, tooltip = NULL)
+```
+
+Resources: 
+* https://plotly.com/r/hover-text-and-formatting/
+* https://stackoverflow.com/questions/36325154/how-to-choose-variable-to-display-in-tooltip-when-using-ggplotly
 
 
+## Leaflet
+
+```{r, warning = FALSE, message = FALSE}
+library(readr)
+library(leaflet)
+library(viridis)
+library(dplyr)
+```
+
+Lets use some station data from water temperature dataset.
+```{r, warning = FALSE, message = FALSE}
+stations_URL <- "https://portal.edirepository.org/nis/dataviewer?packageid=edi.591.2&entityid=a059f5eea4f8500fe1a43566451ec593"
+
+stations <- readr::read_csv(stations_URL) %>%
+  mutate(County = factor(County)) %>%
+  mutate(Temperature = runif(n = nrow(.), min = 8, max = 30)) # Add a column of made up temperature data
+dplyr::glimpse(stations)
+```
+
+Define your color palette. How do you want to color your stations?
+```{r, warning = FALSE, message = FALSE}
+# Let's say we are coloring by County. 
+unique(stations$County) # There are 6 counties
+
+# We will pick 6 colors from the viridis package. 
+pal <- colorFactor(viridis::viridis(6), stations$County)
+```
+
+You could alternatively use colorNumeric, colorBin, or colorQuantile as an argument. See https://rstudio.github.io/leaflet/colors.html
+
+Make your plot. 
+```{r, warning = FALSE, message = FALSE}
+stations %>% # call data frame.
+  leaflet() %>% # call leaflet.
+  addTiles() %>% # this adds the map in the background.
+  addCircleMarkers(
+    color = ~pal(County),
+    stroke = FALSE, # alters whether there is a border to circle
+    fillOpacity = 0.8,
+    lng = ~Longitude, # call your longitude column name
+    lat = ~Latitude, # call you latitude column name
+  label = ~paste(Station, "Lat:", Latitude, "Long:", Longitude)) %>% # edit what you want to show up in your label
+  addLegend(pal = pal,
+            values = ~County,
+            position = "bottomright")
+```
+
+If you want to change the radius of your points based on a variable, you can also do that. 
+
+Define your palette colors again. In this example, we picked individual colors rather than using an existing palette, and assign them directly to each basin.
+```{r, warning = FALSE, message = FALSE}
+unique(stations$Basin) # need 7
+
+pal2 <- colorFactor(c("purple3", "blue3", "forestgreen", "orange", "orangered", "hotpink", "grey"), domain = c("Cache Cr", "Delta", "East Bay", "Mokelumne R", "Sacramento R", "San Joaquin R", "Stanislaus R"))
+```
+
+Make map, this time defining the "radius" option. 
+```{r, warning = FALSE, message = FALSE}
+stations %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(
+    fillColor = ~pal2(Basin),
+    radius = ~sqrt(Temperature), # modify the size of circles based on the temperature
+    stroke = FALSE, 
+    fillOpacity = 0.6,
+    lng = ~Longitude,
+    lat = ~Latitude,
+    label = ~paste(Station, "Lat:", Latitude, "Long:", Longitude, "Temperature:", Temperature))%>%
+  addLegend(pal = pal2,
+            values = ~Basin,
+            position = "topright")
+```
+
+You can also have the labels be more permanent.
+See labelOptions below (noHide = T). If textOnly = FALSE, there will be a white box around your label. Doesn't work great for this plot, since there are so many stations. 
+```{r, warning = FALSE, message = FALSE}
+stations %>%
+  leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(
+    fillColor = ~pal2(Basin),
+    radius = ~sqrt(Temperature), # modify the size of circles based on the temperature
+    stroke = FALSE, 
+    fillOpacity = 0.6,
+    lng = ~Longitude,
+    lat = ~Latitude,
+    label = ~Station,
+    labelOptions = labelOptions(noHide = T, direction = "right", textsize = "7px", textOnly = TRUE))%>%
+  addLegend(pal = pal2,
+            values = ~Basin,
+            position = "topright")
+```
+
+There are other types of markers too.
+This is the default.
+```{r, warning = FALSE, message = FALSE}
+stations %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(
+    lng = ~Longitude,
+    lat = ~Latitude,
+    label = ~Station)
+```
+
+This is a square. 
+```{r, warning = FALSE, message = FALSE}
+stations %>%
+leaflet() %>% 
+  addTiles() %>%
+  addRectangles(
+    lng1=min(stations$Longitude) - 0.1, lat1=min(stations$Latitude) -0.1 ,
+    lng2=max(stations$Longitude) +0.1, lat2=max(stations$Latitude) +0.1,
+    fillColor = "transparent",
+    color = "orangered"
+  ) %>%
+  addCircleMarkers(
+    lng = ~Longitude,
+    lat = ~Latitude,
+    label = ~Station,
+    radius = 2)
+```
+
+## Mapview
+
+This one is a nice, simple way to just take a look at your points.
+```{r, warning = FALSE, message = FALSE}
+library(mapview)
+library(sf)
+```
+
+Convert your stations to a spatial object. 
+```{r, warning = FALSE, message = FALSE}
+# name the columns for longitude and latitude
+# crs is the WGS 1984 projection, which is usually the projection for lat/lon data
+stations_sf <- sf::st_as_sf(stations, coords = c("Longitude", "Latitude"), crs = 4326)
+```
+
+Just one line to see a decent plot!
+This one shows you all the associated data linked with each point.
+```{r, warning = FALSE, message = FALSE}
+mapview(stations_sf)
+```
+
+Color by variable of interest
+```{r, warning = FALSE, message = FALSE}
+mapview(stations_sf, zcol = "Basin")
+```
+
+Size your variables
+```{r, warning = FALSE, message = FALSE}
+mapview(stations_sf, zcol = "Basin", cex = "Temperature")
 ```
