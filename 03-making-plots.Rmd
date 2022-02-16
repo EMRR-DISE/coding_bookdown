@@ -1,2 +1,232 @@
 # Making Plots
 
+---
+title: "Response of aquatic weeds to herbicide treatments"
+author: "Nick Rasmussen"
+date: "5/26/2020"
+output:
+  pdf_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+
+---
+
+```{r set global options for all chunks, include=FALSE}
+
+knitr::opts_chunk$set(include=TRUE, message=FALSE, warning=FALSE)
+
+```
+
+### Coding goals
+
+We will learn the basics of R as we generate a series of plots. These plots will be based on a real data set produced in our office for the Delta Smelt Resiliency Strategy Aquatic Weed Control Action
+
+
+### Study overview
+
+The purpose of this two-year study was to use herbicides to remove invasive aquatic vegetation from potential habitat for endangered delta smelt. In this experiment there were two treated sites and two untreated reference sites. We monitored many aspects of the ecosystem to document changes in response to the herbicide applications. We have data for vegetation biomass and species composition as well as water quality, phytoplankton, zooplankton, and fishes. For now, we will just focus on the vegetation biomass data.
+
+
+### Metadata for data set
+
+Description of columns in vegetation biomass data set.
+
+**date:** Date a sample was collected rounded to the nearest month, so the data are plotted by survey month instead of exact date.  
+**site:** Study sites in the North Delta. Little Hasting (LH) was treated with herbicides to remove aquatic weeds. French Island (FI) is a site near LH that is similar in many ways but remained untreated.  
+**rake_no:** Samples of aquatic vegetation were collected using a long-handled thatch rake. There were 20-40 samples collected for each site x date combination.  
+**mass_kg:** Total wet biomass of aquatic vegetation collected from a rake sample.
+
+### Helpful resources
+
+[R for Data Science](https://r4ds.had.co.nz/): This is the primary source for learning how to use the tidyverse packages. Also this whole book was created using RMarkdown! I'll just refer to it as RDS in the lessons below.
+
+
+### Initial set up
+
+#### Install and load required packages
+
+For the exercises, you'll need the "tidyverse" which is a suite of packages that are useful for data science, and the "lubridate" package, which is handy for formatting dates.
+
+Packages only need to be installed once, which is why the code to do that is now commented out with the '#'
+
+Make sure the names of the packages are in quotes, or the code won't work.
+
+You will need to load the packages you want to use during every session using the library() function. As you load the packages, you'll get some warnings and other notifications. It's good to take a look at them, but most of the time, you don't need to worry about them. I turned off printing of messages and warning in my markdown, so you won't see them below.
+
+
+```{r install and load packages}
+
+#install.packages("lubridate") 
+#install.packages("tidyverse") 
+
+library(lubridate)
+library(tidyverse)
+
+```
+
+Note: Packages can also be installed from the "Packages" tab in the lower right pane.
+
+
+#### Read the data set into R
+
+It is often easiest to import data into R as a comma delimited file, which involves using the read.csv() function. You can import data from other types of files too, but the import function will be a little different.
+
+The data set we will use is published on the Environmental Data Initiative website, so we can read it using the link to the csv file.
+
+
+
+```{r import data}
+
+veg_data<-read.csv("https://portal.edirepository.org/nis/dataviewer?packageid=edi.1079.1&entityid=f29d1162866d4e9fb2fdd7355efd4c1e")
+
+```
+
+#### Examine the structure of the data set
+
+The str() function will show you some useful information about each column including what type of column it is.
+
+```{r examine data}
+
+str(veg_data)
+
+```
+
+The head() function will show you the first six rows of data. Similarly, the tail() function will show you the last six rows. 
+
+```{r view the beginning and end of the data set}
+
+head(veg_data) 
+tail(veg_data)
+
+```
+
+#### Simplying the data set a bit for our first plotting exercises
+
+```{r}
+
+veg_data_north <- veg_data %>% 
+  filter(Site == "LH" | Site == "FI") 
+  
+```
+
+
+
+### Formatting the data set and making the first plot
+
+#### Format the date column
+The column type looks fine for all the columns except the date. We need to change it from factor to date. This is where the 'lubridate' package comes in handy. The original format of the date in our tibble is month-day-year, so we use the mdy() function. 
+
+```{r format date column}
+
+veg_data_north$Date<-mdy(veg_data_north$Date)
+glimpse(veg_data_north)
+
+```
+
+Note that the dollar sign is used to specify a column within a data frame or tibble (i.e., dataframe$column)
+
+#### Start exploring the vegetation biomass data by plotting them as a histogram
+
+```{r histogram of data}
+
+ggplot(data=vmass, aes(mass_kg)) + geom_histogram()
+
+```
+
+Note: R warns you that six values were removed because they are 'NA' which is not a number. Keep in mind that there are NAs in this data set. It will be important later.
+
+
+### Summarize the data in new tibble
+
+Create a new tibble that summarizes the mass data. Calculate sample count, mean, and standard deviation for each date at each site. Don't forget to account for the "NA" values when doing your summary stats.
+
+The final data set should have columns: date, site, count, mean, sd. 
+
+Try using the pipe (%>%) to do all of this in one block of code. The keyboard shortcut for pipe: press and hold Shift + Control + M. See "Help" menu at the top for more RStudio keyboard shortcuts.
+
+```{r summary stats}
+veg_data_north_stats<-veg_data_north %>% #name of the source tibble
+  group_by(Site, Date) %>% #columns of tibble to group by
+  summarize(
+    count = n(), #counts number of samples for each site x date combo
+    mean = mean(Total_Wet_Biomass_kg, na.rm=T), #calculates means
+    sd = sd(Total_Wet_Biomass_kg, na.rm=T) #calculates standard deviations
+  )
+```
+
+### Plot time series for each study site separately
+
+Now, we will make plots with the summary stats we generated. The plot will show the mean vegetation biomass through time. Plot the mean values as points and connect the means with lines to make the pattern easier to see.
+
+For general background, see RDS sections 3 (Data Visualization) and 7 (Exploratory Data Analysis). Neither section will show you how to make this specific plot though. Check out the example below for more relevant examples.
+http://www.sthda.com/english/wiki/ggplot2-line-plot-quick-start-guide-r-software-and-data-visualization
+For this, use the tibble you made in Exercise #3 with the summary stats for both sites.
+
+Also, add the error bars indicating the standard deviations around each mean.
+
+Make the points and lines associated with each of the two sites different colors so they can be easily distinguished. For color blind folks, also use different point types (e.g., circles vs. triangles) and different line types (e.g., solid vs dashed). 
+
+To see all the point and line type options check out this [webpage](http://www.cookbook-r.com/Graphs/Shapes_and_line_types/) 
+
+For color options, check out this [webpage](http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf)
+
+
+In this plot, the line types, point types, and colors are different between sites but just using defaults
+
+```{r combined plot using defaults}
+
+(veg_plot <- ggplot(veg_data_north_stats, aes(x=Date, y=mean, group=Site, color=Site, shape=Site)) +
+  geom_line(aes(linetype=Site))+
+   geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width = 1, position=position_dodge(2)) +
+  geom_point()
+)
+
+```
+
+
+This is the same plot but with custom line types, point types, and colors
+
+```{r combined plot with customized settings}
+
+(veg_plot_custom <-ggplot(veg_data_north_stats, aes(x=Date, y=mean, group=Site, shape=Site,  color=Site, fill=Site)) +
+    geom_line(aes(linetype=Site))+
+    geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width = 1, position=position_dodge(2)) +
+    geom_point()+
+    scale_color_manual(values =c("midnightblue","darkorange3"), aesthetics = c("colour", "fill"))+
+    scale_shape_manual(values = c(21, 25))+
+    scale_linetype_manual(values = c(2,3))
+)
+  
+
+```
+
+You can export these plots as imaging using code. I exported them as PNG files, but there are other options.
+
+```{r export plots with sites plotted separately}
+#French Island plot
+
+ggsave(plot = veg_plot_custom #tell ggsave which plot to export
+       , filename = "VegBiomass_TimeSeries_FrenchIsland.png" #provide the name for the image file
+       , width = 6, height =4, units = "in" #dimensions of the exported image
+       , dpi = 300 #resolution of the image (dots per inch)
+       )
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
