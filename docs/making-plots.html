@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Making Plots | Response of aquatic weeds to herbicide treatments</title>
+  <title>Chapter 3 Making Plots | Coding Bookdown for EMRR</title>
   <meta name="description" content="<p>This book provides example code for stats and working with data in R.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Making Plots | Response of aquatic weeds to herbicide treatments" />
+  <meta property="og:title" content="Chapter 3 Making Plots | Coding Bookdown for EMRR" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://emrr-dise.github.io/coding_bookdown/" />
   <meta property="og:image" content="https://emrr-dise.github.io/coding_bookdown/images/yolo-cows.jpg" />
@@ -20,19 +20,17 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="EMRR-DISE/coding_bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Making Plots | Response of aquatic weeds to herbicide treatments" />
+  <meta name="twitter:title" content="Chapter 3 Making Plots | Coding Bookdown for EMRR" />
   
   <meta name="twitter:description" content="<p>This book provides example code for stats and working with data in R.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="twitter:image" content="https://emrr-dise.github.io/coding_bookdown/images/yolo-cows.jpg" />
 
-<meta name="author" content="Nick Rasmussen" />
+<meta name="author" content="Catarina Pien" />
 
 
-
-<meta name="date" content="2022-02-16" />
-
+<meta name="date" content="2022-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -89,6 +87,7 @@ set in the _output.yml file.</p>" />
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -149,6 +148,28 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -212,8 +233,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html"><i class="fa fa-check"></i><b>9</b> Data Exploration and QA/QC</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#data-exploration"><i class="fa fa-check"></i><b>9.1</b> Data Exploration</a></li>
-<li class="chapter" data-level="9.2" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#qaqc"><i class="fa fa-check"></i><b>9.2</b> QA/QC</a></li>
+<li class="chapter" data-level="9.1" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#recommended-reference-material"><i class="fa fa-check"></i><b>9.1</b> 1 Recommended Reference Material</a></li>
+<li class="chapter" data-level="9.2" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#background"><i class="fa fa-check"></i><b>9.2</b> 2 Background</a></li>
+<li class="chapter" data-level="9.3" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#prepare-your-data"><i class="fa fa-check"></i><b>9.3</b> 3 Prepare your data</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#get-data"><i class="fa fa-check"></i><b>9.3.1</b> Get data</a></li>
+<li class="chapter" data-level="9.3.2" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#develop-your-questions"><i class="fa fa-check"></i><b>9.3.2</b> Develop your questions</a></li>
+<li class="chapter" data-level="9.3.3" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#manipulate-data"><i class="fa fa-check"></i><b>9.3.3</b> Manipulate data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#examine-patterns-and-relationships-between-response-and-predictor"><i class="fa fa-check"></i><b>9.4</b> 4 Examine patterns and relationships between response and predictor</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#a-data-over-time"><i class="fa fa-check"></i><b>9.4.1</b> A) Data over time</a></li>
+<li class="chapter" data-level="9.4.2" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#b-data-over-space"><i class="fa fa-check"></i><b>9.4.2</b> B) Data over space</a></li>
+<li class="chapter" data-level="9.4.3" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#c-variability-of-data-and-continuous-categorical-relationships"><i class="fa fa-check"></i><b>9.4.3</b> C) Variability of data and continuous-categorical relationships</a></li>
+<li class="chapter" data-level="9.4.4" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#d-collinearity-and-relationships-between-continuous-variables"><i class="fa fa-check"></i><b>9.4.4</b> D) Collinearity and relationships between continuous variables</a></li>
+<li class="chapter" data-level="9.4.5" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#e-distribution-of-data"><i class="fa fa-check"></i><b>9.4.5</b> E) Distribution of data</a></li>
+<li class="chapter" data-level="9.4.6" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#f-how-balanced-are-your-data"><i class="fa fa-check"></i><b>9.4.6</b> F) How balanced are your data?</a></li>
+<li class="chapter" data-level="9.4.7" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#g-are-there-missing-data"><i class="fa fa-check"></i><b>9.4.7</b> G) Are there missing data?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#identifying-outliers"><i class="fa fa-check"></i><b>9.5</b> 5 Identifying Outliers</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#a-tukey-outliers"><i class="fa fa-check"></i><b>9.5.1</b> A) Tukey Outliers</a></li>
+<li class="chapter" data-level="9.5.2" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#b-median-absolute-deviation-outliers"><i class="fa fa-check"></i><b>9.5.2</b> B) Median Absolute Deviation Outliers</a></li>
+<li class="chapter" data-level="9.5.3" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#c-run-outlier-tests"><i class="fa fa-check"></i><b>9.5.3</b> C) Run outlier tests</a></li>
+<li class="chapter" data-level="9.5.4" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#d-treatment-of-outliers"><i class="fa fa-check"></i><b>9.5.4</b> D) Treatment of outliers</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#other-qaqc"><i class="fa fa-check"></i><b>9.6</b> 6 Other QA/QC</a></li>
+<li class="chapter" data-level="9.7" data-path="data-exploration-and-qaqc.html"><a href="data-exploration-and-qaqc.html#references"><i class="fa fa-check"></i><b>9.7</b> 7 References</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="basic-stats.html"><a href="basic-stats.html"><i class="fa fa-check"></i><b>10</b> Basic Stats</a>
 <ul>
@@ -225,7 +271,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="glm-and-glmm.html"><a href="glm-and-glmm.html"><i class="fa fa-check"></i><b>11</b> GLM and GLMM</a></li>
 <li class="chapter" data-level="12" data-path="gam-and-gamm.html"><a href="gam-and-gamm.html"><i class="fa fa-check"></i><b>12</b> GAM and GAMM</a></li>
-<li class="chapter" data-level="13" data-path="multivariate-stats.html"><a href="multivariate-stats.html"><i class="fa fa-check"></i><b>13</b> Multivariate Stats</a></li>
+<li class="chapter" data-level="13" data-path="multivariate-stats.html"><a href="multivariate-stats.html"><i class="fa fa-check"></i><b>13</b> Multivariate Stats</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="multivariate-stats.html"><a href="multivariate-stats.html#load-data-1"><i class="fa fa-check"></i><b>13.1</b> Load data</a></li>
+<li class="chapter" data-level="13.2" data-path="multivariate-stats.html"><a href="multivariate-stats.html#pca"><i class="fa fa-check"></i><b>13.2</b> PCA</a></li>
+<li class="chapter" data-level="13.3" data-path="multivariate-stats.html"><a href="multivariate-stats.html#cluster-analysis"><i class="fa fa-check"></i><b>13.3</b> Cluster analysis</a></li>
+<li class="chapter" data-level="13.4" data-path="multivariate-stats.html"><a href="multivariate-stats.html#nmds"><i class="fa fa-check"></i><b>13.4</b> NMDS</a></li>
+<li class="chapter" data-level="13.5" data-path="multivariate-stats.html"><a href="multivariate-stats.html#permanova"><i class="fa fa-check"></i><b>13.5</b> PERMANOVA</a></li>
+<li class="chapter" data-level="13.6" data-path="multivariate-stats.html"><a href="multivariate-stats.html#cca"><i class="fa fa-check"></i><b>13.6</b> CCA</a></li>
+<li class="chapter" data-level="13.7" data-path="multivariate-stats.html"><a href="multivariate-stats.html#load-packages"><i class="fa fa-check"></i><b>13.7</b> Load packages</a></li>
+</ul></li>
 <li class="chapter" data-level="14" data-path="time-series.html"><a href="time-series.html"><i class="fa fa-check"></i><b>14</b> Time Series</a></li>
 <li class="chapter" data-level="15" data-path="github.html"><a href="github.html"><i class="fa fa-check"></i><b>15</b> GitHub</a></li>
 <li class="chapter" data-level="16" data-path="useful-resources.html"><a href="useful-resources.html"><i class="fa fa-check"></i><b>16</b> Useful Resources</a></li>
@@ -264,7 +319,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.8.2" data-path="instructions.html"><a href="instructions.html#metadata-for-sharing"><i class="fa fa-check"></i><b>17.8.2</b> Metadata for sharing</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -274,7 +329,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Response of aquatic weeds to herbicide treatments</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Coding Bookdown for EMRR</a>
           </h1>
         </div>
 
@@ -513,11 +568,11 @@ For this, use the tibble you made in Exercise #3 with the summary stats for both
 <p>You can export these plots as imaging using code. I exported them as PNG files, but there are other options.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="making-plots.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#French Island plot</span></span>
 <span id="cb19-2"><a href="making-plots.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="making-plots.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> veg_plot_custom <span class="co">#tell ggsave which plot to export</span></span>
-<span id="cb19-4"><a href="making-plots.html#cb19-4" aria-hidden="true" tabindex="-1"></a>       , <span class="at">filename =</span> <span class="st">&quot;VegBiomass_TimeSeries_FrenchIsland.png&quot;</span> <span class="co">#provide the name for the image file</span></span>
-<span id="cb19-5"><a href="making-plots.html#cb19-5" aria-hidden="true" tabindex="-1"></a>       , <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span><span class="dv">4</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span> <span class="co">#dimensions of the exported image</span></span>
-<span id="cb19-6"><a href="making-plots.html#cb19-6" aria-hidden="true" tabindex="-1"></a>       , <span class="at">dpi =</span> <span class="dv">300</span> <span class="co">#resolution of the image (dots per inch)</span></span>
-<span id="cb19-7"><a href="making-plots.html#cb19-7" aria-hidden="true" tabindex="-1"></a>       )</span></code></pre></div>
+<span id="cb19-3"><a href="making-plots.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#ggsave(plot = veg_plot_custom #tell ggsave which plot to export</span></span>
+<span id="cb19-4"><a href="making-plots.html#cb19-4" aria-hidden="true" tabindex="-1"></a>       <span class="co">#, filename = &quot;VegBiomass_TimeSeries_FrenchIsland.png&quot; #provide the name for the image file</span></span>
+<span id="cb19-5"><a href="making-plots.html#cb19-5" aria-hidden="true" tabindex="-1"></a>      <span class="co"># , width = 6, height =4, units = &quot;in&quot; #dimensions of the exported image</span></span>
+<span id="cb19-6"><a href="making-plots.html#cb19-6" aria-hidden="true" tabindex="-1"></a>      <span class="co"># , dpi = 300 #resolution of the image (dots per inch)</span></span>
+<span id="cb19-7"><a href="making-plots.html#cb19-7" aria-hidden="true" tabindex="-1"></a>      <span class="co"># )</span></span></code></pre></div>
 
 </div>
 </div>
@@ -582,6 +637,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

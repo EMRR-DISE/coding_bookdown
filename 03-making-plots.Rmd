@@ -1,17 +1,10 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
 # Making Plots
-
----
-title: "Response of aquatic weeds to herbicide treatments"
-author: "Nick Rasmussen"
-date: "5/26/2020"
-output:
-  pdf_document:
-    toc: true
-    toc_float: true
-    code_folding: show
-
----
-
 ```{r set global options for all chunks, include=FALSE}
 
 knitr::opts_chunk$set(include=TRUE, message=FALSE, warning=FALSE)
