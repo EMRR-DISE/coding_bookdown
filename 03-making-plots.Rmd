@@ -251,11 +251,11 @@ You can export these plots as imaging using code. I exported them as PNG files, 
 ```{r export plots with sites plotted separately}
 #French Island plot
 
-ggsave(plot = veg_plot_custom #tell ggsave which plot to export
-       , filename = "VegBiomass_TimeSeries_FrenchIsland.png" #provide the name for the image file
-       , width = 6, height =4, units = "in" #dimensions of the exported image
-       , dpi = 300 #resolution of the image (dots per inch)
-       )
+#ggsave(plot = veg_plot_custom #tell ggsave which plot to export
+       #, filename = "VegBiomass_TimeSeries_FrenchIsland.png" #provide the name for the image file
+      # , width = 6, height =4, units = "in" #dimensions of the exported image
+      # , dpi = 300 #resolution of the image (dots per inch)
+      # )
 
 ```
 
