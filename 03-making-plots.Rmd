@@ -119,7 +119,7 @@ The column type looks fine for all the columns except the date. We need to chang
 
 ```{r format date column}
 
-veg_data_north$Date<-mdy(veg_data_north$Date)
+veg_data_north$Date<-ymd(veg_data_north$Date)
 glimpse(veg_data_north)
 
 ```
@@ -130,7 +130,7 @@ Note that the dollar sign is used to specify a column within a data frame or tib
 
 ```{r histogram of data}
 
-ggplot(data=vmass, aes(mass_kg)) + geom_histogram()
+ggplot(data=veg_data, aes(Total_Wet_Biomass_kg)) + geom_histogram()
 
 ```
 
@@ -147,7 +147,7 @@ Try using the pipe (%>%) to do all of this in one block of code. The keyboard sh
 
 ```{r summary stats}
 veg_data_north_stats<-veg_data_north %>% #name of the source tibble
-  group_by(Site, Date) %>% #columns of tibble to group by
+  group_by(Site, Date,Survey_Month) %>% #columns of tibble to group by
   summarize(
     count = n(), #counts number of samples for each site x date combo
     mean = mean(Total_Wet_Biomass_kg, na.rm=T), #calculates means
@@ -200,6 +200,51 @@ This is the same plot but with custom line types, point types, and colors
   
 
 ```
+
+We can also plot the time series for sites in separate panels
+
+```{r}
+
+ggplot(veg_data_north_stats, aes(x=Date, y=mean, group=Site, shape=Site,  color=Site, fill=Site)) +
+    geom_line(aes(linetype=Site))+
+    geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width = 1, position=position_dodge(2)) +
+    geom_point()+
+    scale_color_manual(values =c("midnightblue","darkorange3"), aesthetics = c("colour", "fill"))+
+    scale_shape_manual(values = c(21, 25))+
+    scale_linetype_manual(values = c(2,3))+
+  facet_grid(Site~.)
+
+```
+
+
+If we prefer, barplots we can create those.
+```{r}
+ggplot(veg_data_north_stats, aes(x=Date, y=mean, group=Site, shape=Site,  color=Site, fill=Site)) +
+    geom_bar(stat="identity",width=15)+
+    geom_errorbar(aes(ymin=mean-sd, ymax=mean+sd), width = 1) +
+    scale_color_manual(values =c("midnightblue","darkorange3"), aesthetics = c("colour", "fill"))+
+      facet_grid(Site~.)
+```
+
+
+Or boxplots
+```{r}
+ggplot(veg_data_north_stats, aes(x=Date, y=mean, group=Site, shape=Site,  color=Site, fill=Site)) +
+    geom_boxplot()+
+    scale_color_manual(values =c("midnightblue","darkorange3"), aesthetics = c("colour", "fill"))+
+      facet_grid(Site~.)
+```
+
+
+Next, let's look at the correlations in vegetation biomass between sites.
+
+```{r}
+
+
+
+```
+
+
 
 You can export these plots as imaging using code. I exported them as PNG files, but there are other options.
 

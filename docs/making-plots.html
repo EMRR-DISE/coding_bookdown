@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Making Plots | Coding Bookdown for EMRR</title>
+  <title>Chapter 3 Making Plots | Response of aquatic weeds to herbicide treatments</title>
   <meta name="description" content="<p>This book provides example code for stats and working with data in R.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Making Plots | Coding Bookdown for EMRR" />
+  <meta property="og:title" content="Chapter 3 Making Plots | Response of aquatic weeds to herbicide treatments" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://emrr-dise.github.io/coding_bookdown/" />
   <meta property="og:image" content="https://emrr-dise.github.io/coding_bookdown/images/yolo-cows.jpg" />
@@ -20,17 +20,16 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="EMRR-DISE/coding_bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Making Plots | Coding Bookdown for EMRR" />
+  <meta name="twitter:title" content="Chapter 3 Making Plots | Response of aquatic weeds to herbicide treatments" />
   
   <meta name="twitter:description" content="<p>This book provides example code for stats and working with data in R.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="twitter:image" content="https://emrr-dise.github.io/coding_bookdown/images/yolo-cows.jpg" />
 
-<meta name="author" content="Catarina Pien" />
+<meta name="author" content="Nick Rasmussen" />
 
 
-<meta name="date" content="2022-01-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -59,20 +58,12 @@ set in the _output.yml file.</p>" />
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -133,28 +124,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -175,7 +144,17 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="basics-of-r.html"><a href="basics-of-r.html"><i class="fa fa-check"></i><b>1</b> Basics of R</a></li>
 <li class="chapter" data-level="2" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data Manipulation</a></li>
-<li class="chapter" data-level="3" data-path="making-plots.html"><a href="making-plots.html"><i class="fa fa-check"></i><b>3</b> Making Plots</a></li>
+<li class="chapter" data-level="3" data-path="making-plots.html"><a href="making-plots.html"><i class="fa fa-check"></i><b>3</b> Making Plots</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="making-plots.html"><a href="making-plots.html#coding-goals"><i class="fa fa-check"></i><b>3.0.1</b> Coding goals</a></li>
+<li class="chapter" data-level="3.0.2" data-path="making-plots.html"><a href="making-plots.html#study-overview"><i class="fa fa-check"></i><b>3.0.2</b> Study overview</a></li>
+<li class="chapter" data-level="3.0.3" data-path="making-plots.html"><a href="making-plots.html#metadata-for-data-set"><i class="fa fa-check"></i><b>3.0.3</b> Metadata for data set</a></li>
+<li class="chapter" data-level="3.0.4" data-path="making-plots.html"><a href="making-plots.html#helpful-resources"><i class="fa fa-check"></i><b>3.0.4</b> Helpful resources</a></li>
+<li class="chapter" data-level="3.0.5" data-path="making-plots.html"><a href="making-plots.html#initial-set-up"><i class="fa fa-check"></i><b>3.0.5</b> Initial set up</a></li>
+<li class="chapter" data-level="3.0.6" data-path="making-plots.html"><a href="making-plots.html#formatting-the-data-set-and-making-the-first-plot"><i class="fa fa-check"></i><b>3.0.6</b> Formatting the data set and making the first plot</a></li>
+<li class="chapter" data-level="3.0.7" data-path="making-plots.html"><a href="making-plots.html#summarize-the-data-in-new-tibble"><i class="fa fa-check"></i><b>3.0.7</b> Summarize the data in new tibble</a></li>
+<li class="chapter" data-level="3.0.8" data-path="making-plots.html"><a href="making-plots.html#plot-time-series-for-each-study-site-separately"><i class="fa fa-check"></i><b>3.0.8</b> Plot time series for each study site separately</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="interactive-tools.html"><a href="interactive-tools.html"><i class="fa fa-check"></i><b>4</b> Interactive Tools</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="interactive-tools.html"><a href="interactive-tools.html#plotly---interactive-plotting"><i class="fa fa-check"></i><b>4.1</b> Plotly - Interactive plotting</a></li>
@@ -252,7 +231,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Coding Bookdown for EMRR</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Response of aquatic weeds to herbicide treatments</a>
           </h1>
         </div>
 
@@ -262,7 +241,242 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="making-plots" class="section level1" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Making Plots</h1>
+<div id="coding-goals" class="section level3" number="3.0.1">
+<h3><span class="header-section-number">3.0.1</span> Coding goals</h3>
+<p>We will learn the basics of R as we generate a series of plots. These plots will be based on a real data set produced in our office for the Delta Smelt Resiliency Strategy Aquatic Weed Control Action</p>
+</div>
+<div id="study-overview" class="section level3" number="3.0.2">
+<h3><span class="header-section-number">3.0.2</span> Study overview</h3>
+<p>The purpose of this two-year study was to use herbicides to remove invasive aquatic vegetation from potential habitat for endangered delta smelt. In this experiment there were two treated sites and two untreated reference sites. We monitored many aspects of the ecosystem to document changes in response to the herbicide applications. We have data for vegetation biomass and species composition as well as water quality, phytoplankton, zooplankton, and fishes. For now, we will just focus on the vegetation biomass data.</p>
+</div>
+<div id="metadata-for-data-set" class="section level3" number="3.0.3">
+<h3><span class="header-section-number">3.0.3</span> Metadata for data set</h3>
+<p>Description of columns in vegetation biomass data set.</p>
+<p><strong>date:</strong> Date a sample was collected rounded to the nearest month, so the data are plotted by survey month instead of exact date.<br />
+<strong>site:</strong> Study sites in the North Delta. Little Hasting (LH) was treated with herbicides to remove aquatic weeds. French Island (FI) is a site near LH that is similar in many ways but remained untreated.<br />
+<strong>rake_no:</strong> Samples of aquatic vegetation were collected using a long-handled thatch rake. There were 20-40 samples collected for each site x date combination.<br />
+<strong>mass_kg:</strong> Total wet biomass of aquatic vegetation collected from a rake sample.</p>
+</div>
+<div id="helpful-resources" class="section level3" number="3.0.4">
+<h3><span class="header-section-number">3.0.4</span> Helpful resources</h3>
+<p><a href="https://r4ds.had.co.nz/">R for Data Science</a>: This is the primary source for learning how to use the tidyverse packages. Also this whole book was created using RMarkdown! I’ll just refer to it as RDS in the lessons below.</p>
+</div>
+<div id="initial-set-up" class="section level3" number="3.0.5">
+<h3><span class="header-section-number">3.0.5</span> Initial set up</h3>
+<div id="install-and-load-required-packages" class="section level4" number="3.0.5.1">
+<h4><span class="header-section-number">3.0.5.1</span> Install and load required packages</h4>
+<p>For the exercises, you’ll need the “tidyverse” which is a suite of packages that are useful for data science, and the “lubridate” package, which is handy for formatting dates.</p>
+<p>Packages only need to be installed once, which is why the code to do that is now commented out with the ‘#’</p>
+<p>Make sure the names of the packages are in quotes, or the code won’t work.</p>
+<p>You will need to load the packages you want to use during every session using the library() function. As you load the packages, you’ll get some warnings and other notifications. It’s good to take a look at them, but most of the time, you don’t need to worry about them. I turned off printing of messages and warning in my markdown, so you won’t see them below.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="making-plots.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;lubridate&quot;) </span></span>
+<span id="cb1-2"><a href="making-plots.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;tidyverse&quot;) </span></span>
+<span id="cb1-3"><a href="making-plots.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="making-plots.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-5"><a href="making-plots.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<p>Note: Packages can also be installed from the “Packages” tab in the lower right pane.</p>
+</div>
+<div id="read-the-data-set-into-r" class="section level4" number="3.0.5.2">
+<h4><span class="header-section-number">3.0.5.2</span> Read the data set into R</h4>
+<p>It is often easiest to import data into R as a comma delimited file, which involves using the read.csv() function. You can import data from other types of files too, but the import function will be a little different.</p>
+<p>The data set we will use is published on the Environmental Data Initiative website, so we can read it using the link to the csv file.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="making-plots.html#cb2-1" aria-hidden="true" tabindex="-1"></a>veg_data<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;https://portal.edirepository.org/nis/dataviewer?packageid=edi.1079.1&amp;entityid=f29d1162866d4e9fb2fdd7355efd4c1e&quot;</span>)</span></code></pre></div>
+</div>
+<div id="examine-the-structure-of-the-data-set" class="section level4" number="3.0.5.3">
+<h4><span class="header-section-number">3.0.5.3</span> Examine the structure of the data set</h4>
+<p>The str() function will show you some useful information about each column including what type of column it is.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="making-plots.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(veg_data)</span></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    876 obs. of  16 variables:
+##  $ Site                  : chr  &quot;DI&quot; &quot;DI&quot; &quot;DI&quot; &quot;DI&quot; ...
+##  $ Site_Type             : chr  &quot;Treated&quot; &quot;Treated&quot; &quot;Treated&quot; &quot;Treated&quot; ...
+##  $ Date                  : chr  &quot;2017-05-25&quot; &quot;2017-06-07&quot; &quot;2017-06-07&quot; &quot;2017-05-25&quot; ...
+##  $ Survey_Month          : chr  &quot;2017_06&quot; &quot;2017_06&quot; &quot;2017_06&quot; &quot;2017_06&quot; ...
+##  $ Latitude              : num  38.1 38.1 38.1 38.1 38.1 ...
+##  $ Longitude             : num  -122 -122 -122 -122 -122 ...
+##  $ Total_Wet_Biomass_kg  : num  0 0 0 0.0055 0.17 0.284 0.304 0.446 0.51 0.518 ...
+##  $ Egeria_densa          : int  0 0 0 50 90 100 100 100 100 100 ...
+##  $ Elodea_canadensis     : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Ceratophyllum_demersum: int  0 0 0 50 0 0 0 0 0 0 ...
+##  $ Potamogeton_crispus   : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Myriophyllum_spicatum : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Stuckenia_pectinata   : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Najas_guadalupensis   : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Potamogeton_nodosus   : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ Cabomba_caroliniana   : int  0 0 0 0 0 0 0 0 0 0 ...</code></pre>
+<p>The head() function will show you the first six rows of data. Similarly, the tail() function will show you the last six rows.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="making-plots.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(veg_data) </span></code></pre></div>
+<pre><code>##   Site Site_Type       Date Survey_Month Latitude Longitude
+## 1   DI   Treated 2017-05-25      2017_06 38.08299 -121.7239
+## 2   DI   Treated 2017-06-07      2017_06 38.08329 -121.7188
+## 3   DI   Treated 2017-06-07      2017_06 38.08331 -121.7192
+## 4   DI   Treated 2017-05-25      2017_06 38.08399 -121.7198
+## 5   DI   Treated 2017-05-25      2017_06 38.08388 -121.7162
+## 6   DI   Treated 2017-05-25      2017_06 38.08351 -121.7166
+##   Total_Wet_Biomass_kg Egeria_densa Elodea_canadensis Ceratophyllum_demersum
+## 1               0.0000            0                 0                      0
+## 2               0.0000            0                 0                      0
+## 3               0.0000            0                 0                      0
+## 4               0.0055           50                 0                     50
+## 5               0.1700           90                 0                      0
+## 6               0.2840          100                 0                      0
+##   Potamogeton_crispus Myriophyllum_spicatum Stuckenia_pectinata
+## 1                   0                     0                   0
+## 2                   0                     0                   0
+## 3                   0                     0                   0
+## 4                   0                     0                   0
+## 5                   0                     0                   0
+## 6                   0                     0                   0
+##   Najas_guadalupensis Potamogeton_nodosus Cabomba_caroliniana
+## 1                   0                   0                   0
+## 2                   0                   0                   0
+## 3                   0                   0                   0
+## 4                   0                   0                   0
+## 5                   0                   0                   0
+## 6                   0                   0                   0</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="making-plots.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(veg_data)</span></code></pre></div>
+<pre><code>##     Site Site_Type       Date Survey_Month Latitude Longitude
+## 871   LH   Treated 2018-12-11      2018_12 38.25070 -121.6918
+## 872   LH   Treated 2018-12-11      2018_12 38.25174 -121.6937
+## 873   LH   Treated 2018-12-11      2018_12 38.24510 -121.6914
+## 874   LH   Treated 2018-12-11      2018_12 38.25291 -121.6921
+## 875   LH   Treated 2018-12-11      2018_12 38.24797 -121.6935
+## 876   LH   Treated 2018-12-11      2018_12 38.25250 -121.6936
+##     Total_Wet_Biomass_kg Egeria_densa Elodea_canadensis Ceratophyllum_demersum
+## 871                0.610            0                90                      0
+## 872                0.746           50                50                      0
+## 873                0.834          100                 0                      0
+## 874                1.026           20                 0                     80
+## 875                1.082           90                 0                      0
+## 876                2.562          100                 0                      0
+##     Potamogeton_crispus Myriophyllum_spicatum Stuckenia_pectinata
+## 871                  10                     0                   0
+## 872                   0                     0                   0
+## 873                   0                     0                   0
+## 874                   0                     0                   0
+## 875                  10                     0                   0
+## 876                   0                     0                   0
+##     Najas_guadalupensis Potamogeton_nodosus Cabomba_caroliniana
+## 871                   0                   0                   0
+## 872                   0                   0                   0
+## 873                   0                   0                   0
+## 874                   0                   0                   0
+## 875                   0                   0                   0
+## 876                   0                   0                   0</code></pre>
+</div>
+<div id="simplying-the-data-set-a-bit-for-our-first-plotting-exercises" class="section level4" number="3.0.5.4">
+<h4><span class="header-section-number">3.0.5.4</span> Simplying the data set a bit for our first plotting exercises</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="making-plots.html#cb9-1" aria-hidden="true" tabindex="-1"></a>veg_data_north <span class="ot">&lt;-</span> veg_data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="making-plots.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Site <span class="sc">==</span> <span class="st">&quot;LH&quot;</span> <span class="sc">|</span> Site <span class="sc">==</span> <span class="st">&quot;FI&quot;</span>) </span></code></pre></div>
+</div>
+</div>
+<div id="formatting-the-data-set-and-making-the-first-plot" class="section level3" number="3.0.6">
+<h3><span class="header-section-number">3.0.6</span> Formatting the data set and making the first plot</h3>
+<div id="format-the-date-column" class="section level4" number="3.0.6.1">
+<h4><span class="header-section-number">3.0.6.1</span> Format the date column</h4>
+<p>The column type looks fine for all the columns except the date. We need to change it from factor to date. This is where the ‘lubridate’ package comes in handy. The original format of the date in our tibble is month-day-year, so we use the mdy() function.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="making-plots.html#cb10-1" aria-hidden="true" tabindex="-1"></a>veg_data_north<span class="sc">$</span>Date<span class="ot">&lt;-</span><span class="fu">ymd</span>(veg_data_north<span class="sc">$</span>Date)</span>
+<span id="cb10-2"><a href="making-plots.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(veg_data_north)</span></code></pre></div>
+<pre><code>## Rows: 536
+## Columns: 16
+## $ Site                   &lt;chr&gt; &quot;FI&quot;, &quot;FI&quot;, &quot;FI&quot;, &quot;FI&quot;, &quot;FI&quot;, &quot;FI&quot;, &quot;FI&quot;, &quot;FI&quot;,~
+## $ Site_Type              &lt;chr&gt; &quot;Reference&quot;, &quot;Reference&quot;, &quot;Reference&quot;, &quot;Referen~
+## $ Date                   &lt;date&gt; 2017-06-09, 2017-05-26, 2017-06-09, 2017-06-07~
+## $ Survey_Month           &lt;chr&gt; &quot;2017_06&quot;, &quot;2017_06&quot;, &quot;2017_06&quot;, &quot;2017_06&quot;, &quot;20~
+## $ Latitude               &lt;dbl&gt; 38.27472, 38.26994, 38.27605, 38.27073, 38.2732~
+## $ Longitude              &lt;dbl&gt; -121.7002, -121.6993, -121.6971, -121.7005, -12~
+## $ Total_Wet_Biomass_kg   &lt;dbl&gt; 0.0000, 0.0840, 0.0917, 0.1780, 0.2420, 0.3080,~
+## $ Egeria_densa           &lt;int&gt; 0, 50, 0, 0, 70, 20, 70, 0, 90, 0, 0, 0, 80, 20~
+## $ Elodea_canadensis      &lt;int&gt; 0, 0, 50, 20, 10, 40, 10, 80, 0, 70, 50, 100, 0~
+## $ Ceratophyllum_demersum &lt;int&gt; 0, 0, 0, 0, 0, 0, 20, 0, 0, 30, 0, 0, 20, 0, 30~
+## $ Potamogeton_crispus    &lt;int&gt; 0, 0, 0, 40, 10, 30, 0, 20, 0, 0, 0, 0, 0, 0, 0~
+## $ Myriophyllum_spicatum  &lt;int&gt; 0, 50, 50, 40, 0, 10, 0, 0, 0, 0, 50, 0, 0, 80,~
+## $ Stuckenia_pectinata    &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ Najas_guadalupensis    &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ Potamogeton_nodosus    &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~
+## $ Cabomba_caroliniana    &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,~</code></pre>
+<p>Note that the dollar sign is used to specify a column within a data frame or tibble (i.e., dataframe$column)</p>
+</div>
+<div id="start-exploring-the-vegetation-biomass-data-by-plotting-them-as-a-histogram" class="section level4" number="3.0.6.2">
+<h4><span class="header-section-number">3.0.6.2</span> Start exploring the vegetation biomass data by plotting them as a histogram</h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="making-plots.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>veg_data, <span class="fu">aes</span>(Total_Wet_Biomass_kg)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/histogram%20of%20data-1.png" width="672" /></p>
+<p>Note: R warns you that six values were removed because they are ‘NA’ which is not a number. Keep in mind that there are NAs in this data set. It will be important later.</p>
+</div>
+</div>
+<div id="summarize-the-data-in-new-tibble" class="section level3" number="3.0.7">
+<h3><span class="header-section-number">3.0.7</span> Summarize the data in new tibble</h3>
+<p>Create a new tibble that summarizes the mass data. Calculate sample count, mean, and standard deviation for each date at each site. Don’t forget to account for the “NA” values when doing your summary stats.</p>
+<p>The final data set should have columns: date, site, count, mean, sd.</p>
+<p>Try using the pipe (%&gt;%) to do all of this in one block of code. The keyboard shortcut for pipe: press and hold Shift + Control + M. See “Help” menu at the top for more RStudio keyboard shortcuts.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="making-plots.html#cb13-1" aria-hidden="true" tabindex="-1"></a>veg_data_north_stats<span class="ot">&lt;-</span>veg_data_north <span class="sc">%&gt;%</span> <span class="co">#name of the source tibble</span></span>
+<span id="cb13-2"><a href="making-plots.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Site, Date,Survey_Month) <span class="sc">%&gt;%</span> <span class="co">#columns of tibble to group by</span></span>
+<span id="cb13-3"><a href="making-plots.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb13-4"><a href="making-plots.html#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>(), <span class="co">#counts number of samples for each site x date combo</span></span>
+<span id="cb13-5"><a href="making-plots.html#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">mean</span>(Total_Wet_Biomass_kg, <span class="at">na.rm=</span>T), <span class="co">#calculates means</span></span>
+<span id="cb13-6"><a href="making-plots.html#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd =</span> <span class="fu">sd</span>(Total_Wet_Biomass_kg, <span class="at">na.rm=</span>T) <span class="co">#calculates standard deviations</span></span>
+<span id="cb13-7"><a href="making-plots.html#cb13-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+</div>
+<div id="plot-time-series-for-each-study-site-separately" class="section level3" number="3.0.8">
+<h3><span class="header-section-number">3.0.8</span> Plot time series for each study site separately</h3>
+<p>Now, we will make plots with the summary stats we generated. The plot will show the mean vegetation biomass through time. Plot the mean values as points and connect the means with lines to make the pattern easier to see.</p>
+<p>For general background, see RDS sections 3 (Data Visualization) and 7 (Exploratory Data Analysis). Neither section will show you how to make this specific plot though. Check out the example below for more relevant examples.
+<a href="http://www.sthda.com/english/wiki/ggplot2-line-plot-quick-start-guide-r-software-and-data-visualization" class="uri">http://www.sthda.com/english/wiki/ggplot2-line-plot-quick-start-guide-r-software-and-data-visualization</a>
+For this, use the tibble you made in Exercise #3 with the summary stats for both sites.</p>
+<p>Also, add the error bars indicating the standard deviations around each mean.</p>
+<p>Make the points and lines associated with each of the two sites different colors so they can be easily distinguished. For color blind folks, also use different point types (e.g., circles vs. triangles) and different line types (e.g., solid vs dashed).</p>
+<p>To see all the point and line type options check out this <a href="http://www.cookbook-r.com/Graphs/Shapes_and_line_types/">webpage</a></p>
+<p>For color options, check out this <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">webpage</a></p>
+<p>In this plot, the line types, point types, and colors are different between sites but just using defaults</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="making-plots.html#cb14-1" aria-hidden="true" tabindex="-1"></a>(veg_plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(veg_data_north_stats, <span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>mean, <span class="at">group=</span>Site, <span class="at">color=</span>Site, <span class="at">shape=</span>Site)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="making-plots.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype=</span>Site))<span class="sc">+</span></span>
+<span id="cb14-3"><a href="making-plots.html#cb14-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>mean<span class="sc">-</span>sd, <span class="at">ymax=</span>mean<span class="sc">+</span>sd), <span class="at">width =</span> <span class="dv">1</span>, <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="making-plots.html#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb14-5"><a href="making-plots.html#cb14-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/combined%20plot%20using%20defaults-1.png" width="672" /></p>
+<p>This is the same plot but with custom line types, point types, and colors</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="making-plots.html#cb15-1" aria-hidden="true" tabindex="-1"></a>(veg_plot_custom <span class="ot">&lt;-</span><span class="fu">ggplot</span>(veg_data_north_stats, <span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>mean, <span class="at">group=</span>Site, <span class="at">shape=</span>Site,  <span class="at">color=</span>Site, <span class="at">fill=</span>Site)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="making-plots.html#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype=</span>Site))<span class="sc">+</span></span>
+<span id="cb15-3"><a href="making-plots.html#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>mean<span class="sc">-</span>sd, <span class="at">ymax=</span>mean<span class="sc">+</span>sd), <span class="at">width =</span> <span class="dv">1</span>, <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="making-plots.html#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb15-5"><a href="making-plots.html#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span><span class="fu">c</span>(<span class="st">&quot;midnightblue&quot;</span>,<span class="st">&quot;darkorange3&quot;</span>), <span class="at">aesthetics =</span> <span class="fu">c</span>(<span class="st">&quot;colour&quot;</span>, <span class="st">&quot;fill&quot;</span>))<span class="sc">+</span></span>
+<span id="cb15-6"><a href="making-plots.html#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">25</span>))<span class="sc">+</span></span>
+<span id="cb15-7"><a href="making-plots.html#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb15-8"><a href="making-plots.html#cb15-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/combined%20plot%20with%20customized%20settings-1.png" width="672" /></p>
+<p>We can also plot the time series for sites in separate panels</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="making-plots.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veg_data_north_stats, <span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>mean, <span class="at">group=</span>Site, <span class="at">shape=</span>Site,  <span class="at">color=</span>Site, <span class="at">fill=</span>Site)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="making-plots.html#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype=</span>Site))<span class="sc">+</span></span>
+<span id="cb16-3"><a href="making-plots.html#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>mean<span class="sc">-</span>sd, <span class="at">ymax=</span>mean<span class="sc">+</span>sd), <span class="at">width =</span> <span class="dv">1</span>, <span class="at">position=</span><span class="fu">position_dodge</span>(<span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="making-plots.html#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb16-5"><a href="making-plots.html#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span><span class="fu">c</span>(<span class="st">&quot;midnightblue&quot;</span>,<span class="st">&quot;darkorange3&quot;</span>), <span class="at">aesthetics =</span> <span class="fu">c</span>(<span class="st">&quot;colour&quot;</span>, <span class="st">&quot;fill&quot;</span>))<span class="sc">+</span></span>
+<span id="cb16-6"><a href="making-plots.html#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">25</span>))<span class="sc">+</span></span>
+<span id="cb16-7"><a href="making-plots.html#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))<span class="sc">+</span></span>
+<span id="cb16-8"><a href="making-plots.html#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Site<span class="sc">~</span>.)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>If we prefer, barplots we can create those.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="making-plots.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veg_data_north_stats, <span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>mean, <span class="at">group=</span>Site, <span class="at">shape=</span>Site,  <span class="at">color=</span>Site, <span class="at">fill=</span>Site)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="making-plots.html#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">&quot;identity&quot;</span>,<span class="at">width=</span><span class="dv">15</span>)<span class="sc">+</span></span>
+<span id="cb17-3"><a href="making-plots.html#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>mean<span class="sc">-</span>sd, <span class="at">ymax=</span>mean<span class="sc">+</span>sd), <span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="making-plots.html#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span><span class="fu">c</span>(<span class="st">&quot;midnightblue&quot;</span>,<span class="st">&quot;darkorange3&quot;</span>), <span class="at">aesthetics =</span> <span class="fu">c</span>(<span class="st">&quot;colour&quot;</span>, <span class="st">&quot;fill&quot;</span>))<span class="sc">+</span></span>
+<span id="cb17-5"><a href="making-plots.html#cb17-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">facet_grid</span>(Site<span class="sc">~</span>.)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Or boxplots</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="making-plots.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veg_data_north_stats, <span class="fu">aes</span>(<span class="at">x=</span>Date, <span class="at">y=</span>mean, <span class="at">group=</span>Site, <span class="at">shape=</span>Site,  <span class="at">color=</span>Site, <span class="at">fill=</span>Site)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="making-plots.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()<span class="sc">+</span></span>
+<span id="cb18-3"><a href="making-plots.html#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_manual</span>(<span class="at">values =</span><span class="fu">c</span>(<span class="st">&quot;midnightblue&quot;</span>,<span class="st">&quot;darkorange3&quot;</span>), <span class="at">aesthetics =</span> <span class="fu">c</span>(<span class="st">&quot;colour&quot;</span>, <span class="st">&quot;fill&quot;</span>))<span class="sc">+</span></span>
+<span id="cb18-4"><a href="making-plots.html#cb18-4" aria-hidden="true" tabindex="-1"></a>      <span class="fu">facet_grid</span>(Site<span class="sc">~</span>.)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Next, let’s look at the correlations in vegetation biomass between sites.</p>
+<p>You can export these plots as imaging using code. I exported them as PNG files, but there are other options.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="making-plots.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#French Island plot</span></span>
+<span id="cb19-2"><a href="making-plots.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="making-plots.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">plot =</span> veg_plot_custom <span class="co">#tell ggsave which plot to export</span></span>
+<span id="cb19-4"><a href="making-plots.html#cb19-4" aria-hidden="true" tabindex="-1"></a>       , <span class="at">filename =</span> <span class="st">&quot;VegBiomass_TimeSeries_FrenchIsland.png&quot;</span> <span class="co">#provide the name for the image file</span></span>
+<span id="cb19-5"><a href="making-plots.html#cb19-5" aria-hidden="true" tabindex="-1"></a>       , <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span><span class="dv">4</span>, <span class="at">units =</span> <span class="st">&quot;in&quot;</span> <span class="co">#dimensions of the exported image</span></span>
+<span id="cb19-6"><a href="making-plots.html#cb19-6" aria-hidden="true" tabindex="-1"></a>       , <span class="at">dpi =</span> <span class="dv">300</span> <span class="co">#resolution of the image (dots per inch)</span></span>
+<span id="cb19-7"><a href="making-plots.html#cb19-7" aria-hidden="true" tabindex="-1"></a>       )</span></code></pre></div>
 
+</div>
 </div>
             </section>
 
@@ -325,20 +539,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
