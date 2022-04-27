@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | Coding Bookdown for EMRR</title>
+  <title>Page not found | Response of aquatic weeds to herbicide treatments</title>
   <meta name="description" content="<p>This book provides example code for stats and working with data in R.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | Coding Bookdown for EMRR" />
+  <meta property="og:title" content="Page not found | Response of aquatic weeds to herbicide treatments" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://emrr-dise.github.io/coding_bookdown/" />
   <meta property="og:image" content="https://emrr-dise.github.io/coding_bookdown/images/yolo-cows.jpg" />
@@ -20,18 +20,18 @@ set in the _output.yml file.</p>" />
   <meta name="github-repo" content="EMRR-DISE/coding_bookdown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | Coding Bookdown for EMRR" />
+  <meta name="twitter:title" content="Page not found | Response of aquatic weeds to herbicide treatments" />
   
   <meta name="twitter:description" content="<p>This book provides example code for stats and working with data in R.
 The HTML output format for this example is bookdown::gitbook,
 set in the _output.yml file.</p>" />
   <meta name="twitter:image" content="https://emrr-dise.github.io/coding_bookdown/images/yolo-cows.jpg" />
 
-<meta name="author" content="Catarina Pien" />
+<meta name="author" content="Nick Rasmussen" />
+
 
 
 <meta name="date" content="2022-04-27" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -65,7 +65,6 @@ set in the _output.yml file.</p>" />
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -146,7 +145,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="basics-of-r.html"><a href="basics-of-r.html"><i class="fa fa-check"></i><b>1</b> Basics of R</a></li>
 <li class="chapter" data-level="2" data-path="data-manipulation.html"><a href="data-manipulation.html"><i class="fa fa-check"></i><b>2</b> Data Manipulation</a></li>
-<li class="chapter" data-level="3" data-path="making-plots.html"><a href="making-plots.html"><i class="fa fa-check"></i><b>3</b> Making Plots</a></li>
+<li class="chapter" data-level="3" data-path="making-plots.html"><a href="making-plots.html"><i class="fa fa-check"></i><b>3</b> Making Plots</a>
+<ul>
+<li class="chapter" data-level="3.0.1" data-path="making-plots.html"><a href="making-plots.html#coding-goals"><i class="fa fa-check"></i><b>3.0.1</b> Coding goals</a></li>
+<li class="chapter" data-level="3.0.2" data-path="making-plots.html"><a href="making-plots.html#study-overview"><i class="fa fa-check"></i><b>3.0.2</b> Study overview</a></li>
+<li class="chapter" data-level="3.0.3" data-path="making-plots.html"><a href="making-plots.html#metadata-for-data-set"><i class="fa fa-check"></i><b>3.0.3</b> Metadata for data set</a></li>
+<li class="chapter" data-level="3.0.4" data-path="making-plots.html"><a href="making-plots.html#helpful-resources"><i class="fa fa-check"></i><b>3.0.4</b> Helpful resources</a></li>
+<li class="chapter" data-level="3.0.5" data-path="making-plots.html"><a href="making-plots.html#initial-set-up"><i class="fa fa-check"></i><b>3.0.5</b> Initial set up</a></li>
+<li class="chapter" data-level="3.0.6" data-path="making-plots.html"><a href="making-plots.html#formatting-the-data-set-and-making-the-first-plot"><i class="fa fa-check"></i><b>3.0.6</b> Formatting the data set and making the first plot</a></li>
+<li class="chapter" data-level="3.0.7" data-path="making-plots.html"><a href="making-plots.html#summarize-the-data-in-new-tibble"><i class="fa fa-check"></i><b>3.0.7</b> Summarize the data in new tibble</a></li>
+<li class="chapter" data-level="3.0.8" data-path="making-plots.html"><a href="making-plots.html#plot-time-series-for-each-study-site-separately"><i class="fa fa-check"></i><b>3.0.8</b> Plot time series for each study site separately</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="interactive-tools.html"><a href="interactive-tools.html"><i class="fa fa-check"></i><b>4</b> Interactive Tools</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="interactive-tools.html"><a href="interactive-tools.html#plotly---interactive-plotting"><i class="fa fa-check"></i><b>4.1</b> Plotly - Interactive plotting</a></li>
@@ -275,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Coding Bookdown for EMRR</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Response of aquatic weeds to herbicide treatments</a>
           </h1>
         </div>
 
