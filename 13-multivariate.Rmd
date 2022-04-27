@@ -1,1 +1,112 @@
 # Multivariate Stats
+
+## Load data
+```{r setup, include=FALSE}
+rm(list=ls(all=TRUE))
+
+library(tidyverse)
+library(lubridate)
+library(viridis)
+library(plotly)
+library(readr)
+library(here)
+library(wateRshedTools)
+library(janitor)
+
+WYType <- read.csv("data/WYType.csv")
+```
+
+Get fish data from LTMRdata
+```{r}
+# install.packages("devtools")
+# devtools::install_github("sbashevkin/LTMRdata")
+library(LTMRdata)
+str(Baystudy)
+unique(Baystudy$Station)
+
+baystudy_latlon <- Baystudy %>% select(Latitude, Longitude, Station) %>%
+  distinct()
+ggplot(baystudy_latlon, aes(x = Longitude, y = Latitude, label = Station)) + geom_point() + geom_text()
+
+baystudy_subset <- Baystudy %>% 
+  filter(Station %in% c(101, 320, 428, 805),
+         year(Date) > 2014,
+         Method == "Otter trawl",
+         !is.na(Count)) %>%
+  mutate(CPUE = Count/Tow_area,
+         Month = as.numeric(month(Date)),
+         WY = wateRshedTools::wtr_yr(Date),
+         Season = case_when(Month >=1 & Month<=3 ~ "Winter",
+                            Month>3 & Month<=6 ~ "Spring",
+                            Month > 6 & Month <=9 ~ "Summer",
+                            TRUE ~ "Fall")) %>%
+  left_join(WYType %>% select(WYType_Sac, WY)) %>%
+  select(-Length) %>%
+  arrange(Taxa) %>%
+  distinct()
+```
+
+## PCA
+```{r}
+
+```
+
+## Cluster analysis
+
+
+## NMDS
+
+Fill zeros
+```{r}
+baystudy_wide <- pivot_wider(baystudy_subset, names_from = "Taxa", values_from = CPUE, values_fill = 0)
+baystudy_long <- pivot_longer(baystudy_wide, cols = `Acanthogobius flavimanus`:`Tridentiger trigonocephalus`, values_to = "CPUE", names_to = "Taxa")
+```
+
+Remove rare species
+```{r}
+numSamples = nrow(baystudy_wide)
+
+prop <- baystudy_long %>%
+  filter(CPUE>0) %>%
+  group_by(Taxa) %>%
+  summarize(n = n(),
+            percent = round(n/numSamples*100,2))
+
+fish_abund <- prop %>%
+  filter(percent>5) 
+
+baystudy_nmds <- filter(baystudy_long, Taxa %in% fish_abund$Taxa)
+fish1 <- first(fish_abund$Taxa)
+fishlast <- last(fish_abund$Taxa)
+```
+
+Make species matrix
+```{r}
+spMatrixAll <- baystudy_nmds %>% 
+  pivot_wider(names_from = "Taxa", values_from = CPUE, values_fill = 0) %>%
+  dplyr::select(Station, Season, WYClass = WYType_Sac, Month, Date, fish1:fishlast) 
+
+# Remove any row where there is no catch for the day.
+spMatrix <- spMatrixAll %>% mutate(Total = dplyr::select(., fish1:fishlast) %>%  rowSums(na.rm = TRUE)) %>%
+  filter(Total !=0)
+```
+
+Run NMDS
+```{r}
+# ncolbelow <- ncol(spMatrix)-1
+# library(vegan)
+# nmds <- metaMDS(spMatrix[,6:ncolbelow], distance="bray", k=3, trymax=400, autotransform = FALSE)
+# nmds
+# 
+# stressplot(nmds)
+```
+
+## PERMANOVA
+## CCA
+
+
+
+
+
+## Load packages
+
